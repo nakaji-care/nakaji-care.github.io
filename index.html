@@ -30,6 +30,21 @@
       margin-bottom: 4px;
       font-size: 2rem;
     }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 32px;
+    }
+    nav a {
+      color: #286554;
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid #a8c9be;
+      border-radius: 999px;
+    }
+    nav a:hover, nav a:focus { background: #eaf3ef; }
     header p {
       margin-top: 0;
       font-size: 1.15rem;
@@ -55,6 +70,13 @@
       <h1>なかじ-ケア</h1>
       <p>ここから始動(=ﾟωﾟ)ﾉ</p>
     </header>
+
+    <nav aria-label="メインナビゲーション">
+      <a href="index.html" aria-current="page">ホーム</a>
+      <a href="career.html">略歴</a>
+      <a href="work.html">職務経歴</a>
+      <a href="qualifications.html">資格・免許</a>
+    </nav>
 
     <article>
       <h2>多くの経験が、今の私をつくっている</h2>

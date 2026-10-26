@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>資格・免許｜なかじ-ケア</title>
+  <style>
+    body { margin: 0; padding: 40px 20px; background: #f3f7f5; color: #333; font-family: sans-serif; line-height: 1.9; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px; background: white; border-radius: 12px; }
+    header { text-align: center; color: #397968; margin-bottom: 28px; }
+    header h1 { margin-bottom: 4px; font-size: 2rem; }
+    nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 0 0 32px; }
+    nav a { color: #286554; text-decoration: none; padding: 8px 14px; border: 1px solid #a8c9be; border-radius: 999px; }
+    nav a:hover, nav a:focus { background: #eaf3ef; }
+    h2 { font-size: 1.45rem; border-bottom: 2px solid #a8c9be; padding-bottom: 10px; margin: 28px 0 16px; }
+    .timeline { margin: 0; padding: 0; list-style: none; }
+    .timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e5eeea; }
+    .date { color: #52655e; white-space: nowrap; }
+    @media (max-width: 520px) {
+      body { padding: 16px 10px; } main { padding: 22px 18px; }
+      .timeline li { grid-template-columns: 1fr; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>資格・免許</h1><p>学び続けて身につけてきたこと</p></header>
+    <nav aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a><a href="career.html">略歴</a><a href="work.html">職務経歴</a><a href="qualifications.html" aria-current="page">資格・免許</a>
+    </nav>
+    <article>
+      <p>履歴書に記載した資格・研修と免許を、取得・修了した年月とともに紹介します。</p>
+      <h2>資格・研修</h2>
+      <ul class="timeline">
+        <li><span class="date">平成23年11月</span><span>Microsoft Office Specialist Master 取得</span></li>
+        <li><span class="date">平成25年6月</span><span>秘書技能検定試験 2級 合格</span></li>
+        <li><span class="date">平成25年11月</span><span>福祉住環境コーディネーター検定試験 2級 合格</span></li>
+        <li><span class="date">平成27年10月</span><span>介護事務管理士技能認定試験 合格</span></li>
+        <li><span class="date">平成28年5月</span><span>ユニットリーダー研修 修了</span></li>
+        <li><span class="date">平成29年4月</span><span>介護福祉士 取得</span></li>
+        <li><span class="date">令和7年6月</span><span>介護支援専門員 取得</span></li>
+      </ul>
+      <h2>免許</h2>
+      <ul class="timeline">
+        <li><span class="date">昭和61年3月</span><span>第一種普通自動車免許、普通自動二輪免許 取得</span></li>
+        <li><span class="date">平成21年1月</span><span>第一種中型自動車免許 取得</span></li>
+      </ul>
+    </article>
+  </main>
+</body>
+</html>
