@@ -282,16 +282,29 @@ text-decoration:none;min-height:48px;line-height:1.4;
 @media (prefers-color-scheme: dark){
 .btn-cf-link{background:var(--surface);color:var(--accent);border-color:var(--accent)}
 }
-.cf-entry{
-display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
-background:var(--accent-soft);border:1.5px dashed var(--accent);border-radius:var(--radius);
-padding:14px 18px;margin-top:18px;text-decoration:none;color:var(--ink);
+.cf-entry{display:block;margin-top:18px;text-decoration:none;color:var(--ink)}
+.cf-flag{
+position:relative;display:flex;align-items:center;
+background:linear-gradient(90deg,#a34d16,#cf7126);
+color:#fff;font-weight:900;font-size:1.05rem;line-height:1.5;
+padding:14px 26px 14px 22px;
+clip-path:polygon(0 0,100% 5%,96.5% 50%,100% 95%,0 100%);
+transform-origin:left center;
+animation:cf-wave 2.4s ease-in-out infinite;
 }
-.cf-entry:hover{filter:brightness(.98)}
-.cf-entry .cf-entry-tag{background:var(--accent);color:#fff;font-size:.72rem;font-weight:900;letter-spacing:.08em;border-radius:999px;padding:3px 10px;white-space:nowrap}
-.cf-entry .cf-entry-main{font-weight:900;font-size:.98rem}
-.cf-entry .cf-entry-main span{color:var(--ink-2);font-weight:500;font-size:.88rem}
-.cf-entry .cf-entry-arrow{margin-left:auto;font-weight:900;color:var(--accent);white-space:nowrap}
+.cf-flag::before{
+content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#6b4f2a;
+}
+@keyframes cf-wave{
+0%,100%{transform:rotate(-1.3deg) skewY(-.7deg)}
+50%{transform:rotate(1.3deg) skewY(.9deg)}
+}
+.cf-entry-note{display:block;margin-top:10px;font-size:.88rem;color:var(--ink-2);font-weight:500}
+.cf-entry-note strong{color:var(--ink)}
+.cf-entry-note .cf-entry-arrow{font-weight:900;color:var(--accent);white-space:nowrap}
+@media (prefers-reduced-motion: reduce){
+.cf-flag{animation:none}
+}
 
 /* ---------- card / QR view ---------- */
 .card-stage{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
@@ -457,9 +470,8 @@ html{scroll-behavior:auto}
 </div>
 
 <a href="#crowdfunding" class="cf-entry">
-<span class="cf-entry-tag">おまけ企画</span>
-<span class="cf-entry-main">名刺クラウドファンディング <span>― 用紙代750円・インク代100円・手間賃150円、ちょっきり1,000円の内訳はこちら</span></span>
-<span class="cf-entry-arrow">内訳を見る ↓</span>
+<span class="cf-flag">名刺クラファン挑戦中ぜよ(=ﾟωﾟ)ﾉ</span>
+<span class="cf-entry-note"><strong>おまけ企画</strong> ― 用紙代750円・インク代100円・手間賃150円、ちょっきり1,000円の内訳はこちら <span class="cf-entry-arrow">内訳を見る ↓</span></span>
 </a>
 
 <div class="sec-title">
