@@ -366,6 +366,29 @@ display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-si
 
 footer{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;color:var(--ink-3);font-size:.82rem}
 footer p{margin:4px 0}
+.footer-nav{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 18px}
+.footer-nav .btn{min-height:48px}
+.footer-nav .btn-home{background:var(--primary);color:#f2f7f2}
+.footer-nav .btn-home:hover{background:var(--primary-2)}
+@media (prefers-color-scheme: dark){.footer-nav .btn-home{background:var(--primary-soft);color:var(--primary);border-color:var(--line-strong)}}
+.footer-brand{font-weight:900;color:var(--ink);text-decoration:none}
+.footer-brand:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* floating back-to-top */
+.to-top{
+position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;
+display:inline-flex;align-items:center;gap:6px;
+background:var(--primary);color:#f2f7f2;border:1px solid var(--primary);
+border-radius:999px;padding:10px 16px;min-height:48px;
+font-weight:700;font-size:.9rem;line-height:1;box-shadow:var(--shadow);
+opacity:.92;
+transition:opacity .2s,background .15s;
+}
+.to-top:hover{background:var(--primary-2);opacity:1}
+.to-top.show{opacity:1}
+.to-top .arrow{font-size:1.05rem;line-height:1}
+@media (prefers-color-scheme: dark){.to-top{background:var(--surface);color:var(--primary);border-color:var(--line-strong)}}
+@media (prefers-reduced-motion: reduce){.to-top{transition:none}}
 
 .toast{
 position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);
@@ -715,12 +738,18 @@ html{scroll-behavior:auto}
 </section>
 
 <footer>
+<nav class="footer-nav" aria-label="ページ末尾の移動">
+<button type="button" class="btn btn-ghost" id="footerToTop">↑ ページの上へ戻る</button>
+<a class="btn btn-home" href="https://nakaji-care.github.io/">なかじ-ケア トップページへ →</a>
+</nav>
 <p><a class="back-link" href="https://nakaji-care.github.io/">← トップページへ戻る</a></p>
-<p>連絡ページ試作 ― 中島光広（なかじ-ケア）／ AI秘書：ミューズ君</p>
+<p>連絡ページ試作 ― 中島光広（<a class="footer-brand" href="https://nakaji-care.github.io/" title="なかじ-ケア トップページへ">なかじ-ケア</a>）／ AI秘書：ミューズ君</p>
 <p>受付メールアドレス：<a href="mailto:nakaji-care@muse.ai">nakaji-care＠muse.ai</a>（ミューズ君受付窓口）</p>
 <p>※迷惑メール防止のため、アットマークは全角（＠）で表示しています。メールを送る場合は「＠」を半角の「@」に変えてください。</p>
 </footer>
 </div>
+
+<button type="button" class="to-top" id="toTopBtn" aria-label="ページの上へ戻る"><span class="arrow" aria-hidden="true">↑</span>上へ戻る</button>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1040,6 +1069,24 @@ toast('QRコードをダウンロードしました');
 });
 
 renderQR();
+
+/* ---------- back to top ---------- */
+var toTopBtn = document.getElementById('toTopBtn');
+var footerToTop = document.getElementById('footerToTop');
+function scrollToTop(){
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.scrollTo({top:0, behavior: reduce? 'auto': 'smooth'});
+}
+function updateToTop(){
+if (!toTopBtn) return;
+var y = window.scrollY || window.pageYOffset || 0;
+if (y > 320){ toTopBtn.classList.add('show'); } else { toTopBtn.classList.remove('show'); }
+}
+if (toTopBtn){ toTopBtn.addEventListener('click', scrollToTop); }
+if (footerToTop){ footerToTop.addEventListener('click', scrollToTop); }
+window.addEventListener('scroll', updateToTop, {passive:true});
+window.addEventListener('resize', updateToTop);
+updateToTop();
 })();
 </script>
 </body>
