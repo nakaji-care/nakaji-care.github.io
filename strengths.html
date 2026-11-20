@@ -17,6 +17,33 @@
     .item { padding: 18px 0; border-bottom: 1px solid #e5eeea; }
     .item p { margin: 6px 0; }
     @media (max-width: 520px) { body { padding: 16px 10px; } main { padding: 22px 18px; } }
+  
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    .to-top {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 50;
+      background: #2e5e4e;
+      color: #fff;
+      text-decoration: none;
+      font-size: .85rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+      opacity: .92;
+    }
+    .to-top:hover { opacity: 1; }
+    .page-footer {
+      text-align: center;
+      margin: 30px 0 6px;
+      font-size: .95rem;
+    }
+    .page-footer a { color: #2e5e4e; font-weight: bold; text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -60,6 +87,8 @@
 
       <p>こうした経験を、2027年から始まる介護支援専門員（ケアマネジャー）とショートステイ現場の兼務に生かしていきます。ご相談は<a href="contact.html">ご連絡のページ</a>からどうぞ。</p>
     </article>
+      <p class="page-footer"><a href="index.html">なかじ-ケア</a>（トップページへ戻る）</p>
   </main>
+  <a class="to-top" href="#top">↑ ページの上へ</a>
 </body>
 </html>
