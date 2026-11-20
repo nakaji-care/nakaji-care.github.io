@@ -366,6 +366,10 @@ display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-si
 
 footer{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;color:var(--ink-3);font-size:.82rem}
 footer p{margin:4px 0}
+.page-footer{text-align:center;margin:30px 0 6px;font-size:.95rem}
+.page-footer a{color:#2e5e4e;font-weight:bold;text-decoration:none}
+.page-footer a:hover{text-decoration:underline}
+@media (prefers-color-scheme: dark){.page-footer a{color:#9fd3bd}}
 .footer-nav{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 18px}
 .footer-nav .btn{min-height:48px}
 .footer-nav .btn-home{background:var(--primary);color:#f2f7f2}
@@ -626,12 +630,8 @@ html{scroll-behavior:auto}
 
 
 <footer>
-<nav class="footer-nav" aria-label="ページ末尾の移動">
-<button type="button" class="btn btn-ghost" id="footerToTop">↑ ページの上へ戻る</button>
-<a class="btn btn-home" href="https://nakaji-care.github.io/">なかじ-ケア トップページへ →</a>
-</nav>
-<p><a class="back-link" href="https://nakaji-care.github.io/">← トップページへ戻る</a></p>
-<p>連絡ページ試作 ― 中島光広（<a class="footer-brand" href="https://nakaji-care.github.io/" title="なかじ-ケア トップページへ">なかじ-ケア</a>）／ AI秘書：ミューズ君</p>
+<p class="page-footer"><a href="https://nakaji-care.github.io/">なかじ-ケア</a>（トップページへ戻る）</p>
+<p>連絡ページ試作 ― 中島光広（なかじ-ケア）／ AI秘書：ミューズ君</p>
 <p>受付メールアドレス：<a href="mailto:nakaji-care@muse.ai">nakaji-care＠muse.ai</a>（ミューズ君受付窓口）</p>
 <p>※迷惑メール防止のため、アットマークは全角（＠）で表示しています。メールを送る場合は「＠」を半角の「@」に変えてください。</p>
 </footer>
