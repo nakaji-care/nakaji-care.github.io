@@ -95,6 +95,29 @@
     article p {
       margin-bottom: 1.3em;
     }
+    .boom {
+      overflow: hidden;
+      white-space: nowrap;
+      background: #fdf6ec;
+      border: 1px solid #e8d9bd;
+      border-radius: 8px;
+      padding: 6px 0;
+      margin: -12px 0 28px;
+    }
+    .boom-track {
+      display: inline-flex;
+      animation: boom-scroll 30s linear infinite;
+      color: #7a5a17;
+      font-size: .92rem;
+    }
+    .boom-track span { padding-right: 3em; }
+    @keyframes boom-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .boom-track { animation: none; }
+    }
     @media (max-width: 480px) {
       body { padding: 16px 10px; }
       main { padding: 22px 18px; }
@@ -118,6 +141,13 @@
     </nav>
 
     <p class="cf-note">※結局のところ、名刺代ちょっきり1,000円の金集めです(^.^)</p>
+
+    <div class="boom" aria-label="現在のマイブーム">
+      <div class="boom-track">
+        <span>現在のマイブーム ▶ movie：龍馬伝 ／ music：マルーン5 ／ drink：ジノン ジンソーダ ／ 永遠のマイブーム：ガンダム</span>
+        <span aria-hidden="true">現在のマイブーム ▶ movie：龍馬伝 ／ music：マルーン5 ／ drink：ジノン ジンソーダ ／ 永遠のマイブーム：ガンダム</span>
+      </div>
+    </div>
 
     <article>
       <h2>多くの経験が、今の私をつくっている</h2>
