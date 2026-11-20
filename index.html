@@ -95,6 +95,23 @@
     article p {
       margin-bottom: 1.3em;
     }
+    .counter {
+      text-align: center;
+      margin: 28px 0 4px;
+      color: #52655e;
+      font-size: .9rem;
+    }
+    .counter-num {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 10px;
+      background: #20302a;
+      color: #ffd76a;
+      border-radius: 4px;
+      font-family: "Courier New", monospace;
+      font-weight: bold;
+      letter-spacing: .25em;
+    }
     .boom {
       overflow: hidden;
       white-space: nowrap;
@@ -167,6 +184,16 @@
 
       <p>そんな相互理解を大切にしながら、一人ひとりに向き合えるケアマネジャーを目指しています。</p>
     </article>
+
+    <p class="counter">あなたは<span class="counter-num" id="visitor-count">------</span>人目のお客様です</p>
   </main>
+  <script>
+    fetch('https://abacus.jasoncameron.dev/hit/nakaji-care.github.io/visits')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        document.getElementById('visitor-count').textContent = String(d.value).padStart(6, '0');
+      })
+      .catch(function () { /* カウンターが読めないときは、そのまま */ });
+  </script>
 </body>
 </html>
