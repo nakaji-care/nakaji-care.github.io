@@ -265,6 +265,30 @@ letter-spacing:.1em;border-radius:999px;padding:3px 12px;
 .cf-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
 .cf-count{font-size:.88rem;font-weight:700;color:var(--ink-2)}
 
+/* crowdfunding entry from top */
+#crowdfunding{scroll-margin-top:18px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn-cf-link{
+display:inline-flex;align-items:center;gap:8px;background:#fff;color:#7a3d12;
+border:2px solid #fff;border-radius:999px;padding:10px 18px;font-weight:900;font-size:.92rem;
+text-decoration:none;min-height:48px;line-height:1.4;
+}
+.btn-cf-link:hover{background:var(--accent-soft)}
+.btn-cf-link .yen{font-family:"Shippori Mincho B1",serif;font-size:1.05rem}
+@media (prefers-color-scheme: dark){
+.btn-cf-link{background:var(--surface);color:var(--accent);border-color:var(--accent)}
+}
+.cf-entry{
+display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
+background:var(--accent-soft);border:1.5px dashed var(--accent);border-radius:var(--radius);
+padding:14px 18px;margin-top:18px;text-decoration:none;color:var(--ink);
+}
+.cf-entry:hover{filter:brightness(.98)}
+.cf-entry .cf-entry-tag{background:var(--accent);color:#fff;font-size:.72rem;font-weight:900;letter-spacing:.08em;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.cf-entry .cf-entry-main{font-weight:900;font-size:.98rem}
+.cf-entry .cf-entry-main span{color:var(--ink-2);font-weight:500;font-size:.88rem}
+.cf-entry .cf-entry-arrow{margin-left:auto;font-weight:900;color:var(--accent);white-space:nowrap}
+
 /* ---------- card / QR view ---------- */
 .card-stage{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
 .bizcard{
@@ -363,6 +387,7 @@ html{scroll-behavior:auto}
 <div class="topstrip">
 <div class="site">なかじ-ケア <span>／ nakaji-care.github.io</span></div>
 <span class="badge-proto">試作（プロトタイプ）</span>
+<a href="#crowdfunding" id="topCfLink" style="font-weight:900;font-size:.88rem;color:var(--accent);text-decoration:underline;text-underline-offset:3px">名刺クラファン（1,000円）→</a>
 <div class="note">名刺のQRコードから開く連絡ページの試作です</div>
 </div>
 
@@ -387,6 +412,9 @@ html{scroll-behavior:auto}
 <span>長崎市</span>
 </div>
 <p class="lead">名刺のQRコードからお越しくださり、ありがとうございます。中島へのご連絡は、まずAI秘書のミューズが承ります。下のフォームからお気軽にどうぞ。</p>
+<div class="hero-actions">
+<a href="#crowdfunding" class="btn-cf-link">名刺クラウドファンディングを見る <span class="yen">目標 1,000円</span> →</a>
+</div>
 </div>
 
 <div class="secretary">
@@ -410,6 +438,12 @@ html{scroll-behavior:auto}
 <p class="at-note">※迷惑メール防止のため、アットマークは全角（＠）で表示しています。直接メールを送る場合は、「＠」を半角の「@」に変えて送信してください（上のアドレスをクリック／タップした場合は、そのまま正しい宛先で開きます）。</p>
 </div>
 </div>
+
+<a href="#crowdfunding" class="cf-entry">
+<span class="cf-entry-tag">おまけ企画</span>
+<span class="cf-entry-main">名刺クラウドファンディング <span>― 用紙代750円・インク代100円・手間賃150円、ちょっきり1,000円の内訳はこちら</span></span>
+<span class="cf-entry-arrow">内訳を見る ↓</span>
+</a>
 
 <div class="flow" aria-label="連絡の流れ">
 <div class="step">
@@ -698,6 +732,22 @@ document.body.removeChild(ta);
 if (navigator.clipboard && navigator.clipboard.writeText){
 navigator.clipboard.writeText(text).then(ok, fallback);
 } else { fallback();}
+}
+
+/* top crowdfunding link: switch to visitor view, then jump */
+var topCfLink = document.getElementById('topCfLink');
+if (topCfLink){
+topCfLink.addEventListener('click', function(ev){
+var visitorBtn = document.getElementById('tab-visitor');
+if (visitorBtn && visitorBtn.getAttribute('aria-selected') !== 'true'){
+ev.preventDefault();
+visitorBtn.click();
+setTimeout(function(){
+var target = document.getElementById('crowdfunding');
+if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+}, 450);
+}
+});
 }
 
 /* ---------- tabs ---------- */
