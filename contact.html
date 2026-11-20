@@ -206,6 +206,8 @@ transition:transform.08s, background.15s;
 .btn-ghost:hover{background:var(--surface-2)}
 .btn-accent{background:var(--accent);color:#fff}
 .form-note{font-size:.82rem;color:var(--ink-2);margin:14px 0 0}
+.at-note{font-size:.78rem;color:var(--ink-3);line-height:1.6;margin:2px 0 0}
+.secretary .at-note{color:var(--ink-3);font-size:.78rem}
 .field-error{display:none;color:var(--danger);font-size:.82rem;font-weight:700}
 .field-error.show{display:block}
 
@@ -405,6 +407,7 @@ html{scroll-behavior:auto}
 <p>いただいたご連絡は、ミューズが<strong>内容を要約して中島本人へ報告</strong>します。お返事は、<strong>本人が内容を確認してから</strong>お送りしますので、少しお時間をいただく場合があります。</p>
 <p>お電話番号は公開していません。ご連絡はこのページ経由でお願いしています。その代わり、いただいた用件は一つひとつ本人の目を通します。</p>
 <p>受付メール：<a href="mailto:nakaji-care@muse.ai"><strong>nakaji-care＠muse.ai</strong></a> ― フォームの内容はこのアドレス宛てに届きます。</p>
+<p class="at-note">※迷惑メール防止のため、アットマークは全角（＠）で表示しています。直接メールを送る場合は、「＠」を半角の「@」に変えて送信してください（上のアドレスをクリック／タップした場合は、そのまま正しい宛先で開きます）。</p>
 </div>
 </div>
 
@@ -481,6 +484,7 @@ html{scroll-behavior:auto}
 <button type="button" class="btn btn-ghost" id="sampleBtn">入力例を入れてみる</button>
 </div>
 <p class="form-note">送信先はミューズの受付窓口 <strong>nakaji-care＠muse.ai</strong> です。「ミューズへ送る」で受付票が表示され、「メールアプリで開く」からその宛先へそのまま送信できます。個人情報は、返信と取り次ぎの目的以外には使いません。</p>
+<p class="at-note">※アドレスのアットマークは迷惑メール防止のため全角（＠）で表示しています。アドレスを手入力してメールを送る場合は、「＠」を半角の「@」に変えてください。</p>
 
 <div class="receipt" id="receipt" aria-live="polite">
 <h3>受け付けました（試作の受付票）</h3>
@@ -501,6 +505,7 @@ html{scroll-behavior:auto}
 <a class="btn btn-ghost" id="mailtoBtn" href="mailto:nakaji-care@muse.ai">メールアプリで開く（nakaji-care＠muse.ai宛）</a>
 <button type="button" class="btn btn-ghost" id="resetBtn">フォームを空にする</button>
 </div>
+<p class="at-note">※ボタン内のアドレスは迷惑メール防止のためアットマークを全角（＠）で表示していますが、ボタンを押せば正しい半角アドレス宛てに開きます。アドレスを手入力する場合は「＠」を半角の「@」に変えてください。</p>
 </div>
 </form>
 
@@ -522,7 +527,7 @@ html{scroll-behavior:auto}
 </details>
 <details>
 <summary>送った内容はどこに届きますか？</summary>
-<div class="a"><p>ミューズの受付窓口（<a href="mailto:nakaji-care@muse.ai">nakaji-care＠muse.ai</a>）に届き、要約されて中島本人へ報告されます。広告や営業目的の一斉送信は、取り次ぎをお断りする場合があります。</p></div>
+<div class="a"><p>ミューズの受付窓口（<a href="mailto:nakaji-care@muse.ai">nakaji-care＠muse.ai</a>）に届き、要約されて中島本人へ報告されます。広告や営業目的の一斉送信は、取り次ぎをお断りする場合があります。</p><p style="margin-top:8px;font-size:.85rem">※迷惑メール防止のため、アットマークは全角（＠）で表示しています。直接メールを送る際は、「＠」を半角の「@」に変えてください。</p></div>
 </details>
 </div>
 
@@ -587,6 +592,7 @@ html{scroll-behavior:auto}
 </div>
 </div>
 </div>
+<p class="at-note" style="max-width:620px;margin:8px auto 0">※名刺裏面のメールアドレスも、迷惑メール防止のためアットマークを全角（＠）で表示します。実際にメールを送る場合は、「＠」を半角の「@」に変えてください。</p>
 
 <div class="sec-title">
 <h2>QRコード作成</h2>
@@ -662,6 +668,7 @@ html{scroll-behavior:auto}
 <footer>
 <p>連絡ページ試作 ― 中島光広（なかじ-ケア）／ AI秘書：ミューズ</p>
 <p>受付メールアドレス：<a href="mailto:nakaji-care@muse.ai">nakaji-care＠muse.ai</a>（ミューズ受付窓口）</p>
+<p>※迷惑メール防止のため、アットマークは全角（＠）で表示しています。メールを送る場合は「＠」を半角の「@」に変えてください。</p>
 </footer>
 </div>
 
