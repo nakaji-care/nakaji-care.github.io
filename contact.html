@@ -461,7 +461,7 @@ html{scroll-behavior:auto}
 
 <div class="sec-title">
 <h2>連絡フォーム</h2>
-<p>試作のため、送信ボタンでは「受付票」の見本が表示されます</p>
+<p>送信すると、ミューズ君の受付窓口に直接届きます</p>
 </div>
 
 <form class="panel" id="contactForm" novalidate>
@@ -508,14 +508,14 @@ html{scroll-behavior:auto}
 </div>
 <p class="field-error" id="formError" role="alert"></p>
 <div class="form-actions">
-<button type="submit" class="btn btn-primary">ミューズ君へ送る（試作）</button>
+<button type="submit" class="btn btn-primary" id="submitBtn">ミューズ君へ送る</button>
 <button type="button" class="btn btn-ghost" id="sampleBtn">入力例を入れてみる</button>
 </div>
-<p class="form-note">送信先はミューズ君の受付窓口 <strong>nakaji-care＠muse.ai</strong> です。「ミューズ君へ送る」で受付票が表示され、「メールアプリで開く」からその宛先へそのまま送信できます。個人情報は、返信と取り次ぎの目的以外には使いません。</p>
+<p class="form-note">送信先はミューズ君の受付窓口 <strong>nakaji-care＠muse.ai</strong> です。「ミューズ君へ送る」を押すと、このページからそのまま送信されます。メールソフトの設定は不要です。個人情報は、返信と取り次ぎの目的以外には使いません。</p>
 <p class="at-note">※アドレスのアットマークは迷惑メール防止のため全角（＠）で表示しています。アドレスを手入力してメールを送る場合は、「＠」を半角の「@」に変えてください。</p>
 
 <div class="receipt" id="receipt" aria-live="polite">
-<h3>受け付けました（試作の受付票）</h3>
+<h3 id="receiptTitle">受け付けました</h3>
 <div class="rno">受付番号：<span id="r-no">—</span> ／ 受付日時：<span id="r-date">—</span></div>
 <div class="report-card">
 <div class="rc-head">ミューズ君 → 中島本人への報告イメージ</div>
@@ -529,11 +529,12 @@ html{scroll-behavior:auto}
 </dl>
 </div>
 <div class="receipt-actions">
-<button type="button" class="btn btn-accent" id="copyMsgBtn">メール文面をコピー</button>
-<a class="btn btn-ghost" id="mailtoBtn" href="mailto:nakaji-care@muse.ai">メールアプリで開く（nakaji-care＠muse.ai宛）</a>
+<button type="button" class="btn btn-accent" id="copyMsgBtn">送信内容をコピー</button>
+<a class="btn btn-ghost" id="mailtoBtn" href="mailto:nakaji-care@muse.ai">メールアプリでも送る（nakaji-care＠muse.ai宛）</a>
 <button type="button" class="btn btn-ghost" id="resetBtn">フォームを空にする</button>
 </div>
-<p class="at-note">※ボタン内のアドレスは迷惑メール防止のためアットマークを全角（＠）で表示していますが、ボタンを押せば正しい半角アドレス宛てに開きます。アドレスを手入力する場合は「＠」を半角の「@」に変えてください。</p>
+<p class="at-note">※内容はすでに受付窓口へ送信済みです。「メールアプリでも送る」は、念のためご自身のメールからも送りたい場合の予備の手段です。ボタン内のアドレスは迷惑メール防止のためアットマークを全角（＠）で表示していますが、ボタンを押せば正しい半角アドレス宛てに開きます。アドレスを手入力する場合は「＠」を半角の「@」に変えてください。</p>
+<p class="at-note">※初回は確認手続きのため、取り次ぎまで少し時間がかかる場合があります。あらかじめご了承ください。</p>
 </div>
 </form>
 
@@ -774,8 +775,10 @@ toast('入力例を入れました');
 });
 
 var lastMailBody = '';
+var isSending = false;
 form.addEventListener('submit', function(ev){
 ev.preventDefault();
+if (isSending) return;
 var name = document.getElementById('f-name').value.trim();
 var org = document.getElementById('f-org').value.trim();
 var email = document.getElementById('f-email').value.trim();
@@ -799,8 +802,11 @@ err.classList.remove('show');
 
 var now = new Date();
 function pad(n){ return (n<10?'0':'')+n;}
-var rno = 'NK-' + now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate()) + '-' + Math.floor(1000 + Math.random()*9000);
+var ts = '' + now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
+var rno = 'NK-' + ts;
 var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日 ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+
+function fillReceipt(){
 document.getElementById('r-no').textContent = rno;
 document.getElementById('r-date').textContent = dateStr;
 document.getElementById('r-from').textContent = name + (org? '（' + org + '）': '');
@@ -810,7 +816,6 @@ var summary = msg.length > 90? msg.slice(0, 90) + '…': msg;
 document.getElementById('r-summary').textContent = summary;
 document.getElementById('r-reply').textContent = email;
 document.getElementById('r-method').textContent = method;
-
 lastMailBody =
 '中島光広様へのご連絡（受付番号 ' + rno + '）\n' +
 '────────────────\n' +
@@ -819,25 +824,75 @@ lastMailBody =
 '用件：' + cat + '\n' +
 '希望する連絡方法：' + method + '\n' +
 '────────────────\n' + msg + '\n';
-
-var mailSubject = encodeURIComponent('' + (subject || cat) + '（' + name + '）');
+var mailSubject = encodeURIComponent('【なかじ-ケア】連絡フォームから新しい連絡');
 var mailto = 'mailto:nakaji-care@muse.ai?subject=' + mailSubject + '&body=' + encodeURIComponent(lastMailBody);
 document.getElementById('mailtoBtn').setAttribute('href', mailto);
+}
 
+var submitBtn = document.getElementById('submitBtn');
+var submitLabel = submitBtn ? submitBtn.textContent : '';
+isSending = true;
+if (submitBtn){ submitBtn.disabled = true; submitBtn.textContent = '送信中…'; }
+toast('送信しています…');
+
+fetch('https://formsubmit.co/ajax/nakaji-care@muse.ai', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+body: JSON.stringify({
+name: name,
+org: org || '',
+email: email,
+_replyto: email,
+category: cat,
+subjectInput: subject || '（件名なし）',
+method: method,
+message: msg,
+receiptNo: rno,
+submittedAt: dateStr,
+_subject: '【なかじ-ケア】連絡フォームから新しい連絡',
+_template: 'table',
+_captcha: 'false',
+_honey: ''
+})
+}).then(function(res){
+return res.text().then(function(text){
+var data = null;
+try { data = text ? JSON.parse(text) : null; } catch(e){ data = null; }
+if (!res.ok) throw new Error('send failed');
+if (data && (data.success === false || data.success === 'false')) throw new Error('send failed');
+return data;
+});
+}).then(function(){
+fillReceipt();
+document.getElementById('receiptTitle').textContent = '受け付けました';
 var receipt = document.getElementById('receipt');
 receipt.classList.add('show');
 receipt.scrollIntoView({behavior:'smooth', block:'nearest'});
-toast('受付票を作成しました（試作）');
+toast('送信しました。受け付けました');
+}).catch(function(){
+fillReceipt();
+document.getElementById('receiptTitle').textContent = '送信できませんでした';
+err.textContent = '送信できませんでした。通信環境をご確認のうえ、もう一度お試しください。それでも送れない場合は、下の「メールアプリでも送る」からお送りください。初回は確認手続きのため、取り次ぎまで少し時間がかかる場合があります。';
+err.classList.add('show');
+var receipt = document.getElementById('receipt');
+receipt.classList.add('show');
+receipt.scrollIntoView({behavior:'smooth', block:'nearest'});
+toast('送信できませんでした');
+}).finally(function(){
+isSending = false;
+if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+});
 });
 
 document.getElementById('copyMsgBtn').addEventListener('click', function(){
 if (!lastMailBody){ toast('先にフォームを送信してください'); return;}
-copyText(lastMailBody, 'メール文面をコピーしました');
+copyText(lastMailBody, '送信内容をコピーしました');
 });
 document.getElementById('resetBtn').addEventListener('click', function(){
 form.reset();
 charCount.textContent = '0';
 document.getElementById('receipt').classList.remove('show');
+document.getElementById('receiptTitle').textContent = '受け付けました';
 document.getElementById('formError').classList.remove('show');
 lastMailBody = '';
 toast('フォームを空にしました');
