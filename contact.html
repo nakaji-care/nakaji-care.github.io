@@ -77,8 +77,11 @@ button{font:inherit;cursor:pointer}
 display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
 padding:16px 2px 0;
 }
-.topstrip .site{font-weight:900;letter-spacing:.04em;font-size:.95rem}
+.topstrip .site{font-weight:900;letter-spacing:.04em;font-size:.95rem;color:var(--ink);text-decoration:none}
+.topstrip .site:hover{text-decoration:underline;text-underline-offset:3px}
 .topstrip .site span{color:var(--ink-3);font-weight:500}
+footer .back-link{font-weight:700;text-decoration:none}
+footer .back-link:hover{text-decoration:underline;text-underline-offset:3px}
 .badge-proto{
 display:inline-flex;align-items:center;gap:6px;
 background:var(--accent-soft);color:var(--accent);
@@ -386,7 +389,7 @@ html{scroll-behavior:auto}
 <body>
 <div class="wrap">
 <div class="topstrip">
-<div class="site">なかじ-ケア <span>／ nakaji-care.github.io</span></div>
+<a class="site" href="https://nakaji-care.github.io/">なかじ-ケア <span>／ nakaji-care.github.io</span></a>
 <span class="badge-proto">試作（プロトタイプ）</span>
 <a href="#crowdfunding" id="topCfLink" style="font-weight:900;font-size:.88rem;color:var(--accent);text-decoration:underline;text-underline-offset:3px">名刺クラファン（1,000円）→</a>
 <div class="note">名刺のQRコードから開く連絡ページの試作です</div>
@@ -695,6 +698,7 @@ html{scroll-behavior:auto}
 </section>
 
 <footer>
+<p><a class="back-link" href="https://nakaji-care.github.io/">← トップページへ戻る</a></p>
 <p>連絡ページ試作 ― 中島光広（なかじ-ケア）／ AI秘書：ミューズ君</p>
 <p>受付メールアドレス：<a href="mailto:nakaji-care@muse.ai">nakaji-care＠muse.ai</a>（ミューズ君受付窓口）</p>
 <p>※迷惑メール防止のため、アットマークは全角（＠）で表示しています。メールを送る場合は「＠」を半角の「@」に変えてください。</p>
