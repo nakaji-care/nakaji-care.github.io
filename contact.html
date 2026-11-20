@@ -433,14 +433,7 @@ html{scroll-behavior:auto}
 <div class="note">名刺のQRコードから開く連絡ページの試作です</div>
 </div>
 
-<nav class="tabs" role="tablist" aria-label="表示切り替え">
-<button role="tab" id="tab-visitor" aria-selected="true" aria-controls="view-visitor" data-view="view-visitor">
-訪問者向けページ<small>QRを読み取った人が見る画面</small>
-</button>
-<button role="tab" id="tab-card" aria-selected="false" aria-controls="view-card" data-view="view-card">
-名刺とQRコード<small>印刷用データとカードのデザイン案</small>
-</button>
-</nav>
+
 
 <!-- ================= VISITOR VIEW ================= -->
 <section class="view active" id="view-visitor" role="tabpanel" aria-labelledby="tab-visitor">
@@ -630,112 +623,7 @@ html{scroll-behavior:auto}
 </section>
 
 <!-- ================= CARD / QR VIEW ================= -->
-<section class="view" id="view-card" role="tabpanel" aria-labelledby="tab-card">
-<div class="sec-title" style="margin-top:6px">
-<h2>名刺デザイン案</h2>
-<p>表面はシンプルに、裏面にQRコードと秘書の案内を集約</p>
-</div>
 
-<p class="card-label">表面</p>
-<div class="card-stage" style="grid-template-columns:1fr">
-<div class="bizcard" role="img" aria-label="名刺の表面デザイン案：中島光広、介護福祉士・介護支援専門員">
-<div class="band" aria-hidden="true"></div>
-<div>
-<div class="b-site">NAKAJI-CARE.GITHUB.IO</div>
-<div class="b-name"><small>なかじま みつひろ</small>中島 光広</div>
-<div class="b-roles">介護福祉士 ／ 介護支援専門員（ケアマネジャー）</div>
-</div>
-<div class="b-foot">長崎市<br />ご連絡は裏面のQRコードから ― AI秘書が承ります</div>
-</div>
-</div>
-
-<p class="card-label" style="margin-top:22px">裏面</p>
-<div class="card-stage" style="grid-template-columns:1fr">
-<div class="bizcard back" role="img" aria-label="名刺の裏面デザイン案：QRコードとAI秘書ミューズ君への連絡案内">
-<div class="band" aria-hidden="true"></div>
-<div class="qrbox">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuQAAALkCAIAAADIxrcyAAAQn0lEQVR4nO3YMXIruRVAUcvFLXAXTLn/BTDlLnoRdODIgedLhIbvYvqcvAuvgaZ0C1+v1+tfAABV/54eAADgr4gVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQdpke4NOu99v0CPzB8Xi+/ezK+a6sy/ft+Bs827ex4xmdzdm+STcrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQdpkeYCfH4zk9wjau99vIuitntDLz1Lcxtc8rdjyjs627wt/J79vx9zvFzQoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKRdpgc4i+v9Nj3Cjx2P5/QIP7bjPq+YOqOVfZ46o7Otu6Md92rHv5M7crMCAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpl+kB4Dcdj+fbz17vt1+c5DNWZl7ZqxVT6+54vlN7BTVuVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIO0yPQBUHI/n289e77dfnOQzpmZeWXfljKbOd2Vd4L/crAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNpleoCzOB7P6RFO4Xq/vf3s1Bmd7dtYOaMpU2e04/e8YseZ+Qw3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkHaZHmAn1/ttegT4Hyvf5PF4Wje+7o78neTv4GYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSvl6v1/QMkHC936ZH+LHj8RxZ115939ReTb0v/B3crAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNpleoBPu95vbz97PJ7brTtl5X1XrOzVjvu8Ysczom/Hv3X+L/S5WQEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgLTL9ACfdjye0yOcwtn2+Xq/vf3syl6trMv3nW2fz/a+foN9blYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACDtMj3ATq732/QIHzX1vsfjObLuyvtOzTy17oqpfd5x3RU7fs87/o3d8dvYkZsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBI+3q9XtMzfNT1fnv72ePx3G7dHa3s1Yodz3fHvdrR1D6v2PF7XrHjzHyfmxUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEj7er1e0zPwB9f7bXqEbRyP59vP2ufv23GfV2aesrJXzqhv6nx35GYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMDfNr1fnv72ePxHFl3xcrMO9pxn3eceWrdqb1aMfU3h8/Y8ZvckZsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIu0wPsJPr/TY9wo/tODOfMfVtHI/nyLordvwdrcy84xlNWdmrHb+rKW5WAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAg7ev1ek3PwB9c77fpEX7seDzffnblfVfWnbLj+57tm5wytc87flc7ni/f52YFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMD7OR6v02P8GPH4zmy7o57tTLz1D6vmDoje9Xn2/iMs/3NWeFmBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0i7TA+zkeDxH1r3eb9utu7JXK+vuuFc7rrujHb/nFTvOPOVs77sjNysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJB2mR7g067328i6x+M5su6UHff5bDNPfZNTM5/tN7hix29jxdned0duVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIO3r9XpNz3AK1/vt7WePx/MXJ/m+HWeesrJXOzrb+a6Y+h35/fJP4mYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMDfNr1fpse4aOm3ndl3ePx3G7dFVPr7vhtrJja5xVnO6MpZ/ubsyM3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkPb1er2mZ4Bfc73fRtY9Hs+3n91x5ik77tWOM0+Z2qsVU9/Gjue7ws0KAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkXaYH+LTr/TY9An9wPJ7W/aaV73nqtzC1zytW9mrqfFdMve+KHb8rvs/NCgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApF2mB9jJ8XhOj7CN6/02su6OZ7TjXq3M7H37dvwd8c/mZgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANK+Xq/X9Awfdb3f3n72eDxH1p0y9b4r664428xTfFfUTH0bfJ+bFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASLtMDwC873g83372er/94iSfMfW+K+uuONv7Tn2TU+tO7fOO3KwAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAEDaZXoA+E3X++3tZ4/Hc2Tds5k6o5Vnp/iuvm/qfFfOaOq3sCM3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkHaZHuAsjsdzeoRTWNnn6/32i5N8xtned2Xmqb3acd0dTe3V2fZ5ipsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIu0wPsJPr/TY9An9wtjNaed/j8fzFST7jbOd7Nivf5I7fxtl+vyvcrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNrX6/WangEA4P9yswIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQ9h/EqAY7I0BAfQAAAABJRU5ErkJggg==" alt="なかじ-ケアのサイトへつながるQRコード" />
-<div class="cap">スマホで読み取り</div>
-</div>
-<div class="b-msg">
-<h3>ご連絡は、まず<br />AI秘書ミューズ君へ</h3>
-<p>QRコード先のページからご連絡ください。用件は秘書が要約して中島本人へ取り次ぎ、返信は本人が確認してお送りします。</p>
-<div class="url">https://nakaji-care.github.io/<br />受付：nakaji-care＠muse.ai</div>
-</div>
-</div>
-</div>
-<p class="at-note" style="max-width:620px;margin:8px auto 0">※名刺裏面のメールアドレスも、迷惑メール防止のためアットマークを全角（＠）で表示します。実際にメールを送る場合は、「＠」を半角の「@」に変えてください。</p>
-
-<div class="sec-title">
-<h2>QRコード作成</h2>
-<p>リンク先URLは固定。ページの中身は後から変えられます</p>
-</div>
-
-<div class="qr-lab">
-<div class="qr-display">
-<div id="qrCanvasBox">
-<img id="qrFallback" src="data:image/png;base64,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" alt="生成されたQRコード" />
-</div>
-<div class="qr-url" id="qrUrlLabel">https://nakaji-care.github.io/</div>
-</div>
-<div class="qr-controls panel" style="box-shadow:none">
-<div class="field">
-<label for="qr-url">リンク先URL</label>
-<input type="text" id="qr-url" value="https://nakaji-care.github.io/" inputmode="url" />
-<span class="hint">将来、連絡専用ページを作ったら、そのURLに差し替えるだけで新しいQRが作れます。ただし印刷済みの名刺のQRは変えられないため、最初のURL選びが大切です。</span>
-</div>
-<div class="field">
-<span style="font-weight:700;font-size:.92rem">QRの色</span>
-<div class="seg" role="group" aria-label="QRの色">
-<button type="button" data-color="#14342b" aria-pressed="true">深緑（名刺案）</button>
-<button type="button" data-color="#000000" aria-pressed="false">黒（印刷標準）</button>
-</div>
-</div>
-<div class="field">
-<span style="font-weight:700;font-size:.92rem">大きさ</span>
-<div class="seg" role="group" aria-label="QRの大きさ">
-<button type="button" data-size="256" aria-pressed="false">小 256px</button>
-<button type="button" data-size="512" aria-pressed="true">中 512px</button>
-<button type="button" data-size="1024" aria-pressed="false">大 1024px</button>
-</div>
-</div>
-<div class="form-actions" style="margin-top:6px">
-<button type="button" class="btn btn-primary" id="qrDownload">QRコードをダウンロード（PNG）</button>
-<button type="button" class="btn btn-ghost" id="copyUrlBtn">URLをコピー</button>
-</div>
-<p class="form-note">ダウンロードされるのは、いま表示中のQRコードです。印刷会社へ渡す場合は「大 1024px」と「黒」が無難です。</p>
-</div>
-</div>
-
-<div class="sec-title">
-<h2>印刷と運用の決めごと</h2>
-</div>
-<ul class="spec-list panel" style="box-shadow:none">
-<li><span class="k">印刷サイズ</span><span class="v">名刺裏面のQRは <strong>20mm前後</strong> が目安。小さすぎると読み取りにくくなるため、18mm未満にはしない。</span></li>
-<li><span class="k">余白（静寂領域）</span><span class="v">QRの周囲に <strong>4モジュール分以上の白い余白</strong> を確保する。名刺の帯や文字を近づけすぎない。</span></li>
-<li><span class="k">色</span><span class="v">濃い色 × 白背景で十分なコントラストを保つ。反転（白抜き）QRは読み取り失敗のもとになるため使わない。</span></li>
-<li><span class="k">URLは固定</span><span class="v">QRが指すURLは変えない。転居や所属が変わっても、<strong>ページの中身だけを更新</strong> すれば刷り直し不要。</span></li>
-<li><span class="k">入稿前テスト</span><span class="v">試し刷りを複数のスマホで読み取り、連絡ページが開くか必ず確認してから本印刷する。</span></li>
-</ul>
-
-<div class="sec-title">
-<h2>この仕組みの約束</h2>
-</div>
-<div class="rules">
-<div class="rule">
-<h3>受付はミューズ君、判断は本人</h3>
-<p>ミューズ君は要約と取り次ぎまで。約束の確定や返信の送信は、必ず中島本人が確認してから行います。</p>
-</div>
-<div class="rule">
-<h3>連絡先は一本化</h3>
-<p>電話番号や私用メールを名刺に載せない代わりに、窓口をこのページに一本化。相手にも迷わせません。</p>
-</div>
-<div class="rule">
-<h3>記録が残る</h3>
-<p>誰から・いつ・どんな用件があったかをミューズ君が報告するので、口頭の伝言より行き違いが減ります。</p>
-</div>
-</div>
-</section>
 
 <footer>
 <nav class="footer-nav" aria-label="ページ末尾の移動">
