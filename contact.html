@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>連絡ページ｜中島光広（なかじ-ケア）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem;}
+:root{
+--bg:#eef2ee;
+--bg-soft:#e3ebe3;
+--surface:#ffffff;
+--surface-2:#f4f7f3;
+--ink:#1c2b25;
+--ink-2:#4a5d54;
+--ink-3:#71827a;
+--line:#cfdccf;
+--line-strong:#a9bfa9;
+--primary:#14342b;
+--primary-2:#1d5c46;
+--primary-soft:#dcebe0;
+--accent:#b85c1e;
+--accent-soft:#f7e8da;
+--gold:#8a6d1f;
+--danger:#b3352b;
+--card-paper:#fdfdfa;
+--card-ink:#1c2b25;
+--shadow:0 10px 30px rgba(20,52,43,.10);
+--shadow-sm:0 2px 10px rgba(20,52,43,.08);
+--radius:14px;
+}
+@media (prefers-color-scheme: dark){
+:root{
+--bg:#0d1713;
+--bg-soft:#122019;
+--surface:#16241d;
+--surface-2:#1a2b22;
+--ink:#e9f1ea;
+--ink-2:#b3c4b7;
+--ink-3:#8ba295;
+--line:#2c4236;
+--line-strong:#3d5c4a;
+--primary:#9fd3b6;
+--primary-2:#7cc79e;
+--primary-soft:#1e3a2c;
+--accent:#eda763;
+--accent-soft:#3a2a18;
+--gold:#d3b45e;
+--danger:#f0928a;
+--card-paper:#fdfdfa;
+--card-ink:#1c2b25;
+--shadow:0 10px 30px rgba(0,0,0,.35);
+--shadow-sm:0 2px 10px rgba(0,0,0,.3);
+}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;background:var(--bg);color:var(--ink);
+font-family:"Zen Kaku Gothic New",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;
+font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+}
+.mincho{font-family:"Shippori Mincho B1",serif}
+a{color:var(--primary-2)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 18px 64px}
+
+/* ---------- top strip ---------- */
+.topstrip{
+display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
+padding:16px 2px 0;
+}
+.topstrip .site{font-weight:900;letter-spacing:.04em;font-size:.95rem}
+.topstrip .site span{color:var(--ink-3);font-weight:500}
+.badge-proto{
+display:inline-flex;align-items:center;gap:6px;
+background:var(--accent-soft);color:var(--accent);
+border:1px solid var(--accent);border-radius:999px;
+font-size:.78rem;font-weight:700;padding:3px 12px;min-height:28px;
+}
+.topstrip .note{margin-left:auto;font-size:.82rem;color:var(--ink-2)}
+
+/* ---------- view tabs ---------- */
+.tabs{
+display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);
+border-radius:999px;padding:5px;margin:18px 0 26px;box-shadow:var(--shadow-sm);
+}
+.tabs button{
+flex:1;border:0;background:transparent;color:var(--ink-2);
+border-radius:999px;padding:10px 8px;font-weight:700;font-size:.95rem;min-height:44px;
+transition:background.15s,color.15s;
+}
+.tabs button[aria-selected="true"]{background:var(--primary);color:#f2f7f2}
+@media (prefers-color-scheme: dark){
+.tabs button[aria-selected="true"]{background:var(--primary-soft);color:var(--primary)}
+}
+.tabs button small{display:block;font-size:.72rem;font-weight:500;opacity:.75;line-height:1.3}
+
+/* ---------- visitor hero ---------- */
+.hero{
+background:var(--primary);color:#eef5ee;border-radius:20px;
+padding:34px 30px 30px;position:relative;overflow:hidden;
+}
+@media (prefers-color-scheme: dark){.hero{background:var(--surface-2);border:1px solid var(--line)}}
+.hero .who{font-size:.85rem;letter-spacing:.14em;opacity:.8;font-weight:700}
+.hero h1{font-family:"Shippori Mincho B1",serif;font-size:2.35rem;line-height:1.3;margin:8px 0 4px;font-weight:800}
+.hero h1 .ruby{font-size:1rem;letter-spacing:.3em;display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;opacity:.85;margin-bottom:2px}
+.hero .roles{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.hero .roles span{
+border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:4px 14px;font-size:.85rem;font-weight:700;
+}
+@media (prefers-color-scheme: dark){.hero .roles span{border-color:var(--line-strong)}}
+.hero p.lead{margin:18px 0 0;max-width:640px;font-size:1.02rem;line-height:1.9}
+.hero .deco{
+position:absolute;right:-30px;top:-30px;width:190px;height:190px;border-radius:50%;
+border:34px solid rgba(255,255,255,.07);pointer-events:none;
+}
+
+/* secretary card */
+.secretary{
+display:flex;gap:18px;background:var(--surface);border:1px solid var(--line);
+border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-top:-6px;
+position:relative;z-index:1;
+}
+.avatar{
+flex:0 0 74px;width:74px;height:74px;border-radius:50%;
+background:var(--primary-soft);display:grid;place-items:center;
+border:2px solid var(--line-strong);
+}
+.secretary h2{margin:0 0 4px;font-size:1.15rem}
+.secretary h2 .name{color:var(--primary-2)}
+.secretary p{margin:6px 0;color:var(--ink-2);font-size:.95rem}
+.secretary p strong{color:var(--ink)}
+.status-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#3d9d63;margin-right:6px;vertical-align:1px}
+.sec-status{font-size:.8rem;font-weight:700;color:var(--ink-2)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 6px}
+.flow .step{
+background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+padding:16px 16px 12px;position:relative;
+}
+.flow .num{
+font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:1.5rem;color:var(--primary-2);line-height:1;
+}
+.flow h3{margin:8px 0 4px;font-size:.98rem}
+.flow p{margin:0;font-size:.86rem;color:var(--ink-2);line-height:1.65}
+.flow .arrow{
+position:absolute;right:-13px;top:50%;transform:translateY(-50%);z-index:2;
+color:var(--ink-3);font-weight:900;background:var(--bg);border-radius:50%;
+width:24px;height:24px;display:grid;place-items:center;font-size:.8rem;
+}
+.flow .step:last-child .arrow{display:none}
+
+/* section titles */
+.sec-title{display:flex;align-items:baseline;gap:12px;margin:38px 0 14px}
+.sec-title h2{font-family:"Shippori Mincho B1",serif;font-size:1.45rem;margin:0;font-weight:800}
+.sec-title p{margin:0;color:var(--ink-2);font-size:.88rem}
+
+/* form */
+.panel{
+background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+box-shadow:var(--shadow-sm);padding:24px;
+}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-weight:700;font-size:.92rem}
+.field label .req{color:var(--danger);font-size:.8rem;margin-left:4px}
+.field label .opt{color:var(--ink-3);font-size:.8rem;margin-left:4px;font-weight:500}
+.field input[type="text"],.field input[type="email"],.field select,.field textarea{
+font:inherit;color:var(--ink);background:var(--surface-2);
+border:1px solid var(--line-strong);border-radius:10px;padding:10px 12px;width:100%;
+}
+.field textarea{min-height:130px;resize:vertical;line-height:1.7}
+.field .hint{font-size:.78rem;color:var(--ink-3)}
+.char-count{text-align:right;font-size:.78rem;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{
+display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);
+border-radius:999px;padding:8px 16px;cursor:pointer;font-weight:500;font-size:.9rem;min-height:40px;
+background:var(--surface);
+}
+.chips label:has(input:checked){background:var(--primary);color:#f2f7f2;border-color:var(--primary)}
+@media (prefers-color-scheme: dark){.chips label:has(input:checked){background:var(--primary-soft);color:var(--primary)}}
+.chips input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.form-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}
+.btn{
+display:inline-flex;align-items:center;justify-content:center;gap:8px;
+border-radius:10px;border:1px solid transparent;padding:11px 22px;
+font-weight:700;font-size:.98rem;min-height:48px;text-decoration:none;
+transition:transform.08s, background.15s;
+}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--primary);color:#f2f7f2}
+.btn-primary:hover{background:var(--primary-2)}
+@media (prefers-color-scheme: dark){.btn-primary{background:var(--primary-soft);color:var(--primary);border-color:var(--line-strong)}}
+.btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-accent{background:var(--accent);color:#fff}
+.form-note{font-size:.82rem;color:var(--ink-2);margin:14px 0 0}
+.field-error{display:none;color:var(--danger);font-size:.82rem;font-weight:700}
+.field-error.show{display:block}
+
+/* receipt */
+.receipt{display:none;margin-top:22px;border:2px dashed var(--line-strong);border-radius:var(--radius);padding:22px;background:var(--surface-2)}
+.receipt.show{display:block}
+.receipt h3{margin:0 0 2px;font-size:1.1rem}
+.receipt .rno{font-size:.85rem;color:var(--ink-2);font-weight:700;letter-spacing:.06em}
+.report-card{
+background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--primary-2);
+border-radius:10px;padding:16px 18px;margin-top:14px;
+}
+.report-card .rc-head{font-size:.8rem;font-weight:900;letter-spacing:.1em;color:var(--primary-2)}
+.report-card dl{margin:10px 0 0;display:grid;grid-template-columns:86px 1fr;gap:4px 12px;font-size:.93rem}
+.report-card dt{font-weight:700;color:var(--ink-2)}
+.report-card dd{margin:0;white-space:pre-wrap;word-break:break-word}
+.receipt-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+/* FAQ */
+.faq details{
+background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+margin-bottom:10px;overflow:hidden;
+}
+.faq summary{
+cursor:pointer;font-weight:700;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--primary-2);font-weight:900;flex:0 0 auto}
+.faq details[open] summary::after{content:"－"}
+.faq .a{padding:0 18px 16px;color:var(--ink-2);font-size:.94rem}
+.faq .a p{margin:0}
+
+/* crowdfunding joke */
+.cf{
+background:var(--accent-soft);border:2px dashed var(--accent);border-radius:var(--radius);
+padding:22px 24px;margin-top:38px;
+}
+.cf .cf-tag{
+display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:900;
+letter-spacing:.1em;border-radius:999px;padding:3px 12px;
+}
+.cf h2{font-family:"Shippori Mincho B1",serif;font-size:1.35rem;margin:10px 0 6px;font-weight:800}
+.cf p{margin:0 0 6px;color:var(--ink-2);font-size:.94rem}
+.cf p strong{color:var(--ink)}
+.cf-goal{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:14px 0 4px}
+.cf-goal .amount{font-family:"Shippori Mincho B1",serif;font-size:2rem;font-weight:800;line-height:1}
+.cf-goal .label{font-weight:900;font-size:.9rem}
+.cf-bar{height:14px;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;overflow:hidden;margin:8px 0 4px}
+.cf-bar i{display:block;height:100%;width:0;background:var(--accent)}
+.cf-now{font-size:.85rem;font-weight:700;color:var(--ink-2)}
+.cf-break{margin:14px 0 0;padding:0;list-style:none}
+.cf-break li{display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px dotted var(--line-strong);font-size:.92rem}
+.cf-break li:last-child{border-bottom:0;font-weight:900}
+.cf-break .yen{font-weight:700;white-space:nowrap}
+.cf-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.cf-count{font-size:.88rem;font-weight:700;color:var(--ink-2)}
+
+/* ---------- card / QR view ---------- */
+.card-stage{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.bizcard{
+width:100%;max-width:620px;margin:0 auto;
+aspect-ratio:91/55;background:var(--card-paper);color:var(--card-ink);
+border-radius:10px;box-shadow:var(--shadow);border:1px solid #d9d9cf;
+padding:22px 26px;display:flex;flex-direction:column;justify-content:space-between;
+position:relative;overflow:hidden;
+}
+.bizcard .band{position:absolute;left:0;top:0;bottom:0;width:8px;background:#14342b}
+.bizcard .b-site{font-size:.72rem;letter-spacing:.18em;color:#5c6f66;font-weight:700}
+.bizcard .b-name{font-family:"Shippori Mincho B1",serif;font-size:2rem;font-weight:800;line-height:1.2;margin:2px 0}
+.bizcard .b-name small{font-size:.85rem;letter-spacing:.34em;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;color:#5c6f66;display:block}
+.bizcard .b-roles{font-size:.82rem;color:#33513f;font-weight:700}
+.bizcard .b-foot{font-size:.78rem;color:#5c6f66;line-height:1.6}
+.bizcard.back{flex-direction:row;align-items:center;gap:18px}
+.bizcard.back .qrbox{flex:0 0 118px;text-align:center}
+.bizcard.back .qrbox img{width:118px;height:118px;display:block;border-radius:4px}
+.bizcard.back .qrbox .cap{font-size:.62rem;color:#5c6f66;margin-top:4px;letter-spacing:.05em}
+.bizcard.back .b-msg h3{font-family:"Shippori Mincho B1",serif;margin:0 0 6px;font-size:1.12rem;line-height:1.5}
+.bizcard.back .b-msg p{margin:0;font-size:.76rem;color:#44564d;line-height:1.7}
+.bizcard.back .b-msg .url{font-weight:900;color:#14342b;font-size:.8rem;margin-top:8px;word-break:break-all}
+.card-label{font-size:.82rem;font-weight:900;letter-spacing:.1em;color:var(--ink-2);margin:0 0 8px}
+.card-tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn-sm{padding:7px 14px;min-height:40px;font-size:.88rem;border-radius:8px}
+
+.qr-lab{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start}
+.qr-display{
+background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+padding:18px;text-align:center;box-shadow:var(--shadow-sm);
+}
+.qr-display #qrCanvasBox{display:grid;place-items:center;min-height:232px}
+.qr-display #qrCanvasBox img,.qr-display #qrCanvasBox canvas{max-width:232px;width:100%;height:auto;image-rendering:pixelated}
+.qr-display .qr-url{font-size:.8rem;font-weight:700;color:#14342b;word-break:break-all;margin-top:10px}
+.qr-controls .field{margin-bottom:14px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{
+border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+border-radius:8px;padding:8px 14px;font-weight:700;min-height:40px;font-size:.9rem;
+}
+.seg button[aria-pressed="true"]{background:var(--primary);color:#f2f7f2;border-color:var(--primary)}
+@media (prefers-color-scheme: dark){.seg button[aria-pressed="true"]{background:var(--primary-soft);color:var(--primary)}}
+.spec-list{margin:0;padding:0;list-style:none}
+.spec-list li{
+display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.94rem;
+}
+.spec-list li:last-child{border-bottom:0}
+.spec-list .k{flex:0 0 118px;font-weight:900;color:var(--primary-2)}
+.spec-list .v{color:var(--ink-2)}
+.spec-list .v strong{color:var(--ink)}
+
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.rule h3{margin:0 0 6px;font-size:.98rem}
+.rule p{margin:0;font-size:.87rem;color:var(--ink-2);line-height:1.7}
+
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;color:var(--ink-3);font-size:.82rem}
+footer p{margin:4px 0}
+
+.toast{
+position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);
+background:var(--primary);color:#f2f7f2;padding:12px 22px;border-radius:999px;
+font-weight:700;font-size:.92rem;box-shadow:var(--shadow);opacity:0;transition:all.25s;z-index:50;
+max-width:92vw;text-align:center;
+}
+.toast.show{transform:translate(-50%,0);opacity:1}
+@media (prefers-color-scheme: dark){.toast{background:var(--primary-soft);color:var(--primary);border:1px solid var(--line-strong)}}
+
+.view{display:none}
+.view.active{display:block}
+
+@media (max-width:760px){
+.hero{padding:26px 20px 24px}
+.hero h1{font-size:1.85rem}
+.secretary{flex-direction:column;gap:10px;padding:18px}
+.flow{grid-template-columns:1fr}
+.flow .arrow{display:none}
+.form-grid{grid-template-columns:1fr}
+.card-stage{grid-template-columns:1fr}
+.qr-lab{grid-template-columns:1fr}
+.qr-display{max-width:320px;margin:0 auto;width:100%}
+.rules{grid-template-columns:1fr}
+.topstrip .note{margin-left:0}
+.bizcard.back .qrbox{flex-basis:104px}
+.bizcard.back .qrbox img{width:104px;height:104px}
+.panel{padding:18px}
+}
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto}
+*{transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topstrip">
+<div class="site">なかじ-ケア <span>／ nakaji-care.github.io</span></div>
+<span class="badge-proto">試作（プロトタイプ）</span>
+<div class="note">名刺のQRコードから開く連絡ページの試作です</div>
+</div>
+
+<nav class="tabs" role="tablist" aria-label="表示切り替え">
+<button role="tab" id="tab-visitor" aria-selected="true" aria-controls="view-visitor" data-view="view-visitor">
+訪問者向けページ<small>QRを読み取った人が見る画面</small>
+</button>
+<button role="tab" id="tab-card" aria-selected="false" aria-controls="view-card" data-view="view-card">
+名刺とQRコード<small>印刷用データとカードのデザイン案</small>
+</button>
+</nav>
+
+<!-- ================= VISITOR VIEW ================= -->
+<section class="view active" id="view-visitor" role="tabpanel" aria-labelledby="tab-visitor">
+<div class="hero">
+<div class="deco" aria-hidden="true"></div>
+<div class="who">ご連絡窓口</div>
+<h1><span class="ruby">なかじま みつひろ</span>中島 光広</h1>
+<div class="roles">
+<span>介護福祉士</span>
+<span>介護支援専門員（ケアマネジャー）</span>
+<span>長崎市</span>
+</div>
+<p class="lead">名刺のQRコードからお越しくださり、ありがとうございます。中島へのご連絡は、まずAI秘書のミューズが承ります。下のフォームからお気軽にどうぞ。</p>
+</div>
+
+<div class="secretary">
+<div class="avatar" aria-hidden="true">
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+<circle cx="24" cy="20" r="11" fill="#1d5c46"/>
+<circle cx="20" cy="17" r="2.2" fill="#eef5ee"/>
+<circle cx="28" cy="17" r="2.2" fill="#eef5ee"/>
+<path d="M19 24c1.6 1.4 3.4 2 5 2s3.4-.6 5-2" stroke="#eef5ee" stroke-width="2" stroke-linecap="round"/>
+<path d="M8 42c2.5-6.5 8.6-10 16-10s13.5 3.5 16 10" fill="#1d5c46"/>
+<rect x="30" y="30" width="12" height="9" rx="2.5" fill="#b85c1e"/>
+<path d="M33 30v-2a3 3 0 0 1 6 0v2" stroke="#b85c1e" stroke-width="2" fill="none"/>
+</svg>
+</div>
+<div>
+<h2>はじめまして、AI秘書の <span class="name">ミューズ</span> です</h2>
+<div class="sec-status"><span class="status-dot"></span>受付中 ― 中島本人へ取り次ぎます</div>
+<p>いただいたご連絡は、ミューズが<strong>内容を要約して中島本人へ報告</strong>します。お返事は、<strong>本人が内容を確認してから</strong>お送りしますので、少しお時間をいただく場合があります。</p>
+<p>お電話番号は公開していません。ご連絡はこのページ経由でお願いしています。その代わり、いただいた用件は一つひとつ本人の目を通します。</p>
+<p>受付メール：<a href="mailto:nakaji-care@muse.ai"><strong>nakaji-care@muse.ai</strong></a> ― フォームの内容はこのアドレス宛てに届きます。</p>
+</div>
+</div>
+
+<div class="flow" aria-label="連絡の流れ">
+<div class="step">
+<div class="num">1</div>
+<h3>フォームから送信</h3>
+<p>お名前・返信先・ご用件を書いて送ってください。2〜3分で書けます。</p>
+<span class="arrow" aria-hidden="true">›</span>
+</div>
+<div class="step">
+<div class="num">2</div>
+<h3>ミューズが取り次ぎ</h3>
+<p>ミューズが用件を要約し、緊急度とあわせて中島本人へ報告します。</p>
+<span class="arrow" aria-hidden="true">›</span>
+</div>
+<div class="step">
+<div class="num">3</div>
+<h3>本人が確認して返信</h3>
+<p>返信は本人が内容を確認してから。面会や日時の相談もここから進みます。</p>
+</div>
+</div>
+
+<div class="sec-title">
+<h2>連絡フォーム</h2>
+<p>試作のため、送信ボタンでは「受付票」の見本が表示されます</p>
+</div>
+
+<form class="panel" id="contactForm" novalidate>
+<div class="form-grid">
+<div class="field">
+<label for="f-name">お名前<span class="req">必須</span></label>
+<input type="text" id="f-name" name="name" autocomplete="name" placeholder="例：山田 花子" />
+</div>
+<div class="field">
+<label for="f-org">ご所属<span class="opt">任意</span></label>
+<input type="text" id="f-org" name="org" autocomplete="organization" placeholder="例：〇〇地域包括支援センター" />
+</div>
+<div class="field">
+<label for="f-email">返信先メールアドレス<span class="req">必須</span></label>
+<input type="email" id="f-email" name="email" autocomplete="email" placeholder="例：hanako@example.jp" />
+</div>
+<div class="field">
+<label for="f-cat">ご用件の種類<span class="req">必須</span></label>
+<select id="f-cat" name="cat">
+<option value="">選んでください</option>
+<option>介護・ケアマネジメントの相談</option>
+<option>面会・アポイントのご相談</option>
+<option>お仕事・講演などのご依頼</option>
+<option>その他のお問い合わせ</option>
+</select>
+</div>
+<div class="field full">
+<label for="f-subject">件名<span class="opt">任意</span></label>
+<input type="text" id="f-subject" name="subject" placeholder="例：来月の面会日程について" />
+</div>
+<div class="field full">
+<span style="font-weight:700;font-size:.92rem">希望する連絡方法</span>
+<div class="chips" role="radiogroup" aria-label="希望する連絡方法">
+<label><input type="radio" name="method" value="メール" checked />メール</label>
+<label><input type="radio" name="method" value="電話（メールで番号を共有後に調整）" />電話を希望</label>
+<label><input type="radio" name="method" value="対面・面会" />対面・面会</label>
+</div>
+</div>
+<div class="field full">
+<label for="f-msg">メッセージ<span class="req">必須</span></label>
+<textarea id="f-msg" name="msg" maxlength="1000" placeholder="ご用件をお書きください。日時に関するご相談は、候補日をいくつか書いていただけると調整がスムーズです。"></textarea>
+<div class="char-count"><span id="charCount">0</span> / 1000文字</div>
+</div>
+</div>
+<p class="field-error" id="formError" role="alert"></p>
+<div class="form-actions">
+<button type="submit" class="btn btn-primary">ミューズへ送る（試作）</button>
+<button type="button" class="btn btn-ghost" id="sampleBtn">入力例を入れてみる</button>
+</div>
+<p class="form-note">送信先はミューズの受付窓口 <strong>nakaji-care@muse.ai</strong> です。「ミューズへ送る」で受付票が表示され、「メールアプリで開く」からその宛先へそのまま送信できます。個人情報は、返信と取り次ぎの目的以外には使いません。</p>
+
+<div class="receipt" id="receipt" aria-live="polite">
+<h3>受け付けました（試作の受付票）</h3>
+<div class="rno">受付番号：<span id="r-no">—</span> ／ 受付日時：<span id="r-date">—</span></div>
+<div class="report-card">
+<div class="rc-head">ミューズ → 中島本人への報告イメージ</div>
+<dl>
+<dt>差出人</dt><dd id="r-from">—</dd>
+<dt>用件</dt><dd id="r-cat">—</dd>
+<dt>件名</dt><dd id="r-subject">—</dd>
+<dt>要約</dt><dd id="r-summary">—</dd>
+<dt>返信先</dt><dd id="r-reply">—</dd>
+<dt>希望方法</dt><dd id="r-method">—</dd>
+</dl>
+</div>
+<div class="receipt-actions">
+<button type="button" class="btn btn-accent" id="copyMsgBtn">メール文面をコピー</button>
+<a class="btn btn-ghost" id="mailtoBtn" href="mailto:nakaji-care@muse.ai">メールアプリで開く（nakaji-care@muse.ai宛）</a>
+<button type="button" class="btn btn-ghost" id="resetBtn">フォームを空にする</button>
+</div>
+</div>
+</form>
+
+<div class="sec-title">
+<h2>よくある質問</h2>
+</div>
+<div class="faq">
+<details>
+<summary>返信までどれくらいかかりますか？</summary>
+<div class="a"><p>勤務シフトの合間に本人が確認するため、当日〜数日いただくことがあります。お急ぎの場合は、メッセージの冒頭に「急ぎ」とお書きください。ミューズがその旨を添えて取り次ぎます。</p></div>
+</details>
+<details>
+<summary>AI秘書ということは、返事もAIが書くのですか？</summary>
+<div class="a"><p>いいえ。ミューズの役割は受付と要約、取り次ぎまでです。返事の内容は中島本人が確認してからお送りします。</p></div>
+</details>
+<details>
+<summary>電話で直接話したいのですが？</summary>
+<div class="a"><p>電話番号は公開していません。フォームで「電話を希望」を選んでいただければ、メールでやり取りのうえ、日時を調整します。</p></div>
+</details>
+<details>
+<summary>送った内容はどこに届きますか？</summary>
+<div class="a"><p>ミューズの受付窓口（<a href="mailto:nakaji-care@muse.ai">nakaji-care@muse.ai</a>）に届き、要約されて中島本人へ報告されます。広告や営業目的の一斉送信は、取り次ぎをお断りする場合があります。</p></div>
+</details>
+</div>
+
+<div class="cf">
+<span class="cf-tag">おまけ企画</span>
+<h2>名刺クラウドファンディング</h2>
+<p>この名刺、実は<strong>皆さまのご支援で成り立っております</strong>。……というのは冗談ですが、せっかくなのでクラウドファンディング風に内訳を公開します。</p>
+<p>紙代だけでは済みません。インク代と、本人の印刷・切り離しの手間賃まで含めて、目標は<strong>ちょっきり1,000円</strong>です。</p>
+<div class="cf-goal">
+<span class="label">目標金額</span>
+<span class="amount">1,000円</span>
+<span class="cf-now">（ちょっきり）</span>
+</div>
+<div class="cf-bar" role="img" aria-label="現在の支援額は0円、達成率0パーセント"><i></i></div>
+<div class="cf-now">現在の支援額：0円 ／ 達成率 0％ ― まだ誰も支援していません（当たり前です）</div>
+<ul class="cf-break">
+<li><span>名刺用紙代（A4判・切り離しタイプ、100枚分）</span><span class="yen">600円</span></li>
+<li><span>インク代（インクジェット印刷分）</span><span class="yen">200円</span></li>
+<li><span>本人の手間賃（印刷・切り離し・配布）</span><span class="yen">200円</span></li>
+<li><span>合計</span><span class="yen">1,000円</span></li>
+</ul>
+<div class="cf-actions">
+<button type="button" class="btn btn-accent" id="cfCheerBtn">気持ちだけ支援する</button>
+<span class="cf-count" id="cfCount" aria-live="polite">届いた応援の気持ち：0件</span>
+</div>
+<p style="margin-top:12px;font-size:.82rem">※ この企画はページ上の冗談です。実際の支援金の募集・受付は行っていません。「気持ちだけ支援する」ボタンは、お気持ちだけが届く仕組みです。</p>
+</div>
+</section>
+
+<!-- ================= CARD / QR VIEW ================= -->
+<section class="view" id="view-card" role="tabpanel" aria-labelledby="tab-card">
+<div class="sec-title" style="margin-top:6px">
+<h2>名刺デザイン案</h2>
+<p>表面はシンプルに、裏面にQRコードと秘書の案内を集約</p>
+</div>
+
+<p class="card-label">表面</p>
+<div class="card-stage" style="grid-template-columns:1fr">
+<div class="bizcard" role="img" aria-label="名刺の表面デザイン案：中島光広、介護福祉士・介護支援専門員">
+<div class="band" aria-hidden="true"></div>
+<div>
+<div class="b-site">NAKAJI-CARE.GITHUB.IO</div>
+<div class="b-name"><small>なかじま みつひろ</small>中島 光広</div>
+<div class="b-roles">介護福祉士 ／ 介護支援専門員（ケアマネジャー）</div>
+</div>
+<div class="b-foot">長崎市<br />ご連絡は裏面のQRコードから ― AI秘書が承ります</div>
+</div>
+</div>
+
+<p class="card-label" style="margin-top:22px">裏面</p>
+<div class="card-stage" style="grid-template-columns:1fr">
+<div class="bizcard back" role="img" aria-label="名刺の裏面デザイン案：QRコードとAI秘書ミューズへの連絡案内">
+<div class="band" aria-hidden="true"></div>
+<div class="qrbox">
+<img src="data:image/png;base64,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" alt="なかじ-ケアのサイトへつながるQRコード" />
+<div class="cap">スマホで読み取り</div>
+</div>
+<div class="b-msg">
+<h3>ご連絡は、まず<br />AI秘書ミューズへ</h3>
+<p>QRコード先のページからご連絡ください。用件は秘書が要約して中島本人へ取り次ぎ、返信は本人が確認してお送りします。</p>
+<div class="url">https://nakaji-care.github.io/<br />受付：nakaji-care@muse.ai</div>
+</div>
+</div>
+</div>
+
+<div class="sec-title">
+<h2>QRコード作成</h2>
+<p>リンク先URLは固定。ページの中身は後から変えられます</p>
+</div>
+
+<div class="qr-lab">
+<div class="qr-display">
+<div id="qrCanvasBox">
+<img id="qrFallback" src="data:image/png;base64,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" alt="生成されたQRコード" />
+</div>
+<div class="qr-url" id="qrUrlLabel">https://nakaji-care.github.io/</div>
+</div>
+<div class="qr-controls panel" style="box-shadow:none">
+<div class="field">
+<label for="qr-url">リンク先URL</label>
+<input type="text" id="qr-url" value="https://nakaji-care.github.io/" inputmode="url" />
+<span class="hint">将来、連絡専用ページを作ったら、そのURLに差し替えるだけで新しいQRが作れます。ただし印刷済みの名刺のQRは変えられないため、最初のURL選びが大切です。</span>
+</div>
+<div class="field">
+<span style="font-weight:700;font-size:.92rem">QRの色</span>
+<div class="seg" role="group" aria-label="QRの色">
+<button type="button" data-color="#14342b" aria-pressed="true">深緑（名刺案）</button>
+<button type="button" data-color="#000000" aria-pressed="false">黒（印刷標準）</button>
+</div>
+</div>
+<div class="field">
+<span style="font-weight:700;font-size:.92rem">大きさ</span>
+<div class="seg" role="group" aria-label="QRの大きさ">
+<button type="button" data-size="256" aria-pressed="false">小 256px</button>
+<button type="button" data-size="512" aria-pressed="true">中 512px</button>
+<button type="button" data-size="1024" aria-pressed="false">大 1024px</button>
+</div>
+</div>
+<div class="form-actions" style="margin-top:6px">
+<button type="button" class="btn btn-primary" id="qrDownload">QRコードをダウンロード（PNG）</button>
+<button type="button" class="btn btn-ghost" id="copyUrlBtn">URLをコピー</button>
+</div>
+<p class="form-note">ダウンロードされるのは、いま表示中のQRコードです。印刷会社へ渡す場合は「大 1024px」と「黒」が無難です。</p>
+</div>
+</div>
+
+<div class="sec-title">
+<h2>印刷と運用の決めごと</h2>
+</div>
+<ul class="spec-list panel" style="box-shadow:none">
+<li><span class="k">印刷サイズ</span><span class="v">名刺裏面のQRは <strong>20mm前後</strong> が目安。小さすぎると読み取りにくくなるため、18mm未満にはしない。</span></li>
+<li><span class="k">余白（静寂領域）</span><span class="v">QRの周囲に <strong>4モジュール分以上の白い余白</strong> を確保する。名刺の帯や文字を近づけすぎない。</span></li>
+<li><span class="k">色</span><span class="v">濃い色 × 白背景で十分なコントラストを保つ。反転（白抜き）QRは読み取り失敗のもとになるため使わない。</span></li>
+<li><span class="k">URLは固定</span><span class="v">QRが指すURLは変えない。転居や所属が変わっても、<strong>ページの中身だけを更新</strong> すれば刷り直し不要。</span></li>
+<li><span class="k">入稿前テスト</span><span class="v">試し刷りを複数のスマホで読み取り、連絡ページが開くか必ず確認してから本印刷する。</span></li>
+</ul>
+
+<div class="sec-title">
+<h2>この仕組みの約束</h2>
+</div>
+<div class="rules">
+<div class="rule">
+<h3>受付はミューズ、判断は本人</h3>
+<p>ミューズは要約と取り次ぎまで。約束の確定や返信の送信は、必ず中島本人が確認してから行います。</p>
+</div>
+<div class="rule">
+<h3>連絡先は一本化</h3>
+<p>電話番号や私用メールを名刺に載せない代わりに、窓口をこのページに一本化。相手にも迷わせません。</p>
+</div>
+<div class="rule">
+<h3>記録が残る</h3>
+<p>誰から・いつ・どんな用件があったかをミューズが報告するので、口頭の伝言より行き違いが減ります。</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p>連絡ページ試作 ― 中島光広（なかじ-ケア）／ AI秘書：ミューズ</p>
+<p>受付メールアドレス：<a href="mailto:nakaji-care@muse.ai">nakaji-care@muse.ai</a>（ミューズ受付窓口）</p>
+</footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+"use strict";
+var toastTimer = null;
+function toast(msg){
+var t = document.getElementById('toast');
+t.textContent = msg;
+t.classList.add('show');
+clearTimeout(toastTimer);
+toastTimer = setTimeout(function(){ t.classList.remove('show');}, 2600);
+}
+function copyText(text, doneMsg){
+function ok(){ toast(doneMsg);}
+function fallback(){
+var ta = document.createElement('textarea');
+ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+document.body.appendChild(ta); ta.select();
+try { document.execCommand('copy'); ok();} catch(e){ toast('コピーできませんでした');}
+document.body.removeChild(ta);
+}
+if (navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(text).then(ok, fallback);
+} else { fallback();}
+}
+
+/* ---------- tabs ---------- */
+var tabBtns = document.querySelectorAll('.tabs button[data-view]');
+tabBtns.forEach(function(btn){
+btn.addEventListener('click', function(){
+tabBtns.forEach(function(b){ b.setAttribute('aria-selected','false');});
+btn.setAttribute('aria-selected','true');
+document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active');});
+document.getElementById(btn.getAttribute('data-view')).classList.add('active');
+window.scrollTo({top:0, behavior:'smooth'});
+});
+});
+
+/* ---------- form ---------- */
+var form = document.getElementById('contactForm');
+var msgEl = document.getElementById('f-msg');
+var charCount = document.getElementById('charCount');
+msgEl.addEventListener('input', function(){ charCount.textContent = msgEl.value.length;});
+
+document.getElementById('sampleBtn').addEventListener('click', function(){
+document.getElementById('f-name').value = '佐藤 健一';
+document.getElementById('f-org').value = '〇〇地域包括支援センター';
+document.getElementById('f-email').value = 'sato@example.jp';
+document.getElementById('f-cat').value = '面会・アポイントのご相談';
+document.getElementById('f-subject').value = '来月の面会日程について';
+msgEl.value = 'はじめまして。来月、担当している利用者様の件で一度お会いして相談させていただきたいと思っています。候補日は12月15日（火）の午後、または17日（木）の午前中です。ご都合をお聞かせください。';
+charCount.textContent = msgEl.value.length;
+toast('入力例を入れました');
+});
+
+var lastMailBody = '';
+form.addEventListener('submit', function(ev){
+ev.preventDefault();
+var name = document.getElementById('f-name').value.trim();
+var org = document.getElementById('f-org').value.trim();
+var email = document.getElementById('f-email').value.trim();
+var cat = document.getElementById('f-cat').value;
+var subject = document.getElementById('f-subject').value.trim();
+var msg = msgEl.value.trim();
+var methodEl = form.querySelector('input[name="method"]:checked');
+var method = methodEl? methodEl.value: 'メール';
+var err = document.getElementById('formError');
+var problems = [];
+if (!name) problems.push('お名前');
+if (!email || email.indexOf('@') < 1) problems.push('返信先メールアドレス');
+if (!cat) problems.push('ご用件の種類');
+if (!msg) problems.push('メッセージ');
+if (problems.length){
+err.textContent = '次の項目を確認してください：' + problems.join('、');
+err.classList.add('show');
+return;
+}
+err.classList.remove('show');
+
+var now = new Date();
+function pad(n){ return (n<10?'0':'')+n;}
+var rno = 'NK-' + now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate()) + '-' + Math.floor(1000 + Math.random()*9000);
+var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日 ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+document.getElementById('r-no').textContent = rno;
+document.getElementById('r-date').textContent = dateStr;
+document.getElementById('r-from').textContent = name + (org? '（' + org + '）': '');
+document.getElementById('r-cat').textContent = cat;
+document.getElementById('r-subject').textContent = subject || '（件名なし）';
+var summary = msg.length > 90? msg.slice(0, 90) + '…': msg;
+document.getElementById('r-summary').textContent = summary;
+document.getElementById('r-reply').textContent = email;
+document.getElementById('r-method').textContent = method;
+
+lastMailBody =
+'中島光広様へのご連絡（受付番号 ' + rno + '）\n' +
+'────────────────\n' +
+'お名前：' + name + (org? '\nご所属：' + org: '') + '\n' +
+'返信先：' + email + '\n' +
+'用件：' + cat + '\n' +
+'希望する連絡方法：' + method + '\n' +
+'────────────────\n' + msg + '\n';
+
+var mailSubject = encodeURIComponent('' + (subject || cat) + '（' + name + '）');
+var mailto = 'mailto:nakaji-care@muse.ai?subject=' + mailSubject + '&body=' + encodeURIComponent(lastMailBody);
+document.getElementById('mailtoBtn').setAttribute('href', mailto);
+
+var receipt = document.getElementById('receipt');
+receipt.classList.add('show');
+receipt.scrollIntoView({behavior:'smooth', block:'nearest'});
+toast('受付票を作成しました（試作）');
+});
+
+document.getElementById('copyMsgBtn').addEventListener('click', function(){
+if (!lastMailBody){ toast('先にフォームを送信してください'); return;}
+copyText(lastMailBody, 'メール文面をコピーしました');
+});
+document.getElementById('resetBtn').addEventListener('click', function(){
+form.reset();
+charCount.textContent = '0';
+document.getElementById('receipt').classList.remove('show');
+document.getElementById('formError').classList.remove('show');
+lastMailBody = '';
+toast('フォームを空にしました');
+});
+
+/* ---------- crowdfunding joke ---------- */
+var cfCheers = 0;
+document.getElementById('cfCheerBtn').addEventListener('click', function(){
+cfCheers++;
+document.getElementById('cfCount').textContent = '届いた応援の気持ち：' + cfCheers + '件';
+toast(cfCheers === 1? 'ありがとうございます！気持ちだけ、確かに受け取りました': '応援の気持ち ' + cfCheers + '件目、受け取りました！');
+});
+
+/* ---------- QR lab ---------- */
+var qrBox = document.getElementById('qrCanvasBox');
+var qrUrlInput = document.getElementById('qr-url');
+var qrUrlLabel = document.getElementById('qrUrlLabel');
+var qrColor = '#14342b';
+var qrSize = 512;
+var qrInstance = null;
+
+function renderQR(){
+var url = qrUrlInput.value.trim();
+if (!url) return;
+qrUrlLabel.textContent = url;
+if (typeof QRCode === 'undefined'){
+/* CDN unavailable: keep static asset for the default URL */
+if (url === 'https://nakaji-care.github.io/'){
+qrBox.innerHTML = '';
+var img = document.createElement('img');
+img.src = qrColor === '#000000'? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuQAAALkAQAAAABv3x3IAAADg0lEQVR4nO3dS3KjMBAA0NbU7PEN5v7HmhvACTQLC/QBZxI7qZj49cJBAV65tOnSr51yfF0sv74Qj6DT6XQ6nU6n0+l0Op1Op9PpdDqdTqfT6fRv0tMYl4iULv3zS7n39msH+hcEnU6n0+lPrU+5iYiIyPlvyaElaf7JOWLKuc26+9e+4bvT6XQ6nf4E+u+hXQai09w1IyJfm0uKaD5uvLbGmXuGTqfT6fRP13Oey1U7Np13d+/THww6nU6n00+nTzmXBdVl+5jKZPDj+kNBp9PpdPqz6eM88JAr03Vqt87vLpfmubTduJFiz9wzdDqdTqc/qC/ttt7hwbJR6U+/Zek/r/2YnqHT6XQ6/V3RjFePxpx526NU7q67lXJzdTvO3DN0Op1Opz+kD+PQMvqctvMzy9ace2PZjuJchhOvP6Rn6HQ6nU5/Z9wer9ZmimmOYV44HVzl/uxNnLtn6HQ6nU6/I9qaDnNEOyJdr4ZH6kcFyvW6UXh9+Mw9Q6fT6XT6HdFWShrTYsRwpmZXVqm+Mff5V16l0+l0+ivqB8mwv3vUrGuuRwnXeJVOp9Pp9HbbUc2SpTlH7KpBLCnd3MF0oH9B0Ol0Op3+bHpXF2LddjSeXW3uDoWDl0u33WnK/btn7hk6nU6n0z8e+/3AtaJSlzTbuvu1ucaNyktn7hk6nU6n0++Io6XVujNptwG4Lq3eUKyv0ul0Op1+jWlLruviaV1zHQoXtmuua6hjSKfT6fRX15t54BTRV4OIMhkc17oQ0xylouHUDldz/671VTqdTqe/sD6ur6YtaZY/U25+zXyXUtfCwcM67Bpn7hk6nU6n0x/S6zTubva3myBuSwhfymvtT7R+x3en0+l0Ov0p9MP6wO2Yc0lr3d8pRx2+rqPZ+fo3XT+m3OwMjnP3DJ1Op9Ppd8SuNGGNqd3d2/6vu7t7zn5gOp1Op9Mj2ozYnbOpPxG3u4pdqcPb+qcHnU6n0+nPrpel0sv2j6OUGm3CHZZWuzT7k3qGTqfT6fRP1NuqEX/bHFoHt86v0ul0Ov3V9d9v305jyd/usE1743q69WLfEp1Op9NfWR/zah6btSDwWjg4lTIR/d7f/enWOHfP0Ol0Op3+8Tj8PZsaXWX9g1HqGkPWXePMPUOn0+l0+scj7Y/XfF4sZ+4ZOp1Op9PpdDqdTqfT6XQ6nU6n0+l0Op1O7+Mf3a0jM4tbMJMAAAAASUVORK5CYII=': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuQAAALkCAIAAADIxrcyAAAQn0lEQVR4nO3YMXIruRVAUcvFLXAXTLn/BTDlLnoRdODIgedLhIbvYvqcvAuvgaZ0C1+v1+tfAABV/54eAADgr4gVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQdpke4NOu99v0CPzB8Xi+/ezK+a6sy/ft+Bs827ex4xmdzdm+STcrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQdpkeYCfH4zk9wjau99vIuitntDLz1Lcxtc8rdjyjs627wt/J79vx9zvFzQoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKRdpgc4i+v9Nj3Cjx2P5/QIP7bjPq+YOqOVfZ46o7Otu6Md92rHv5M7crMCAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpl+kB4Dcdj+fbz17vt1+c5DNWZl7ZqxVT6+54vlN7BTVuVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIO0yPQBUHI/n289e77dfnOQzpmZeWXfljKbOd2Vd4L/crAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNpleoCzOB7P6RFO4Xq/vf3s1Bmd7dtYOaMpU2e04/e8YseZ+Qw3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkHaZHmAn1/ttegT4Hyvf5PF4Wje+7o78neTv4GYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSvl6v1/QMkHC936ZH+LHj8RxZ115939ReTb0v/B3crAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNpleoBPu95vbz97PJ7brTtl5X1XrOzVjvu8Ysczom/Hv3X+L/S5WQEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgLTL9ACfdjye0yOcwtn2+Xq/vf3syl6trMv3nW2fz/a+foN9blYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACDtMj3ATq732/QIHzX1vsfjObLuyvtOzTy17oqpfd5x3RU7fs87/o3d8dvYkZsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBI+3q9XtMzfNT1fnv72ePx3G7dHa3s1Yodz3fHvdrR1D6v2PF7XrHjzHyfmxUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEj7er1e0zPwB9f7bXqEbRyP59vP2ufv23GfV2aesrJXzqhv6nx35GYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMDfNr1fnv72ePxHFl3xcrMO9pxn3eceWrdqb1aMfU3h8/Y8ZvckZsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIu0wPsJPr/TY9wo/tODOfMfVtHI/nyLordvwdrcy84xlNWdmrHb+rKW5WAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAg7ev1ek3PwB9c77fpEX7seDzffnblfVfWnbLj+57tm5wytc87flc7ni/f52YFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMD7OR6v02P8GPH4zmy7o57tTLz1D6vmDoje9Xn2/iMs/3NWeFmBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0i7TA+zkeDxH1r3eb9utu7JXK+vuuFc7rrujHb/nFTvOPOVs77sjNysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJB2mR7g067328i6x+M5su6UHff5bDNPfZNTM5/tN7hix29jxdned0duVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIO3r9XpNz3AK1/vt7WePx/MXJ/m+HWeesrJXOzrb+a6Y+h35/fJP4mYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMDfNr1fpse4aOm3ndl3ePx3G7dFVPr7vhtrJja5xVnO6MpZ/ubsyM3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkPb1er2mZ4Bfc73fRtY9Hs+3n91x5ik77tWOM0+Z2qsVU9/Gjue7ws0KAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkXaYH+LTr/TY9An9wPJ7W/aaV73nqtzC1zytW9mrqfFdMve+KHb8rvs/NCgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApF2mB9jJ8XhOj7CN6/02su6OZ7TjXq3M7H37dvwd8c/mZgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANK+Xq/X9Awfdb3f3n72eDxH1p0y9b4r664428xTfFfUTH0bfJ+bFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASLtMDwC873g83372er/94iSfMfW+K+uuONv7Tn2TU+tO7fOO3KwAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAEDaZXoA+E3X++3tZ4/Hc2Tds5k6o5Vnp/iuvm/qfFfOaOq3sCM3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkHaZHuAsjsdzeoRTWNnn6/32i5N8xtned2Xmqb3acd0dTe3V2fZ5ipsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIu0wPsJPr/TY9An9wtjNaed/j8fzFST7jbOd7Nivf5I7fxtl+vyvcrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNrX6/WangEA4P9yswIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQ9h/EqAY7I0BAfQAAAABJRU5ErkJggg==';
+img.alt = '生成されたQRコード';
+qrBox.appendChild(img);
+} else {
+toast('QR生成ライブラリを読み込めませんでした');
+}
+return;
+}
+qrBox.innerHTML = '';
+qrInstance = new QRCode(qrBox, {
+text: url,
+width: 232,
+height: 232,
+colorDark: qrColor,
+colorLight: '#ffffff',
+correctLevel: QRCode.CorrectLevel.M
+});
+}
+var qrDebounce = null;
+qrUrlInput.addEventListener('input', function(){
+clearTimeout(qrDebounce);
+qrDebounce = setTimeout(renderQR, 350);
+});
+
+document.querySelectorAll('[data-color]').forEach(function(btn){
+btn.addEventListener('click', function(){
+document.querySelectorAll('[data-color]').forEach(function(b){ b.setAttribute('aria-pressed','false');});
+btn.setAttribute('aria-pressed','true');
+qrColor = btn.getAttribute('data-color');
+renderQR();
+});
+});
+document.querySelectorAll('[data-size]').forEach(function(btn){
+btn.addEventListener('click', function(){
+document.querySelectorAll('[data-size]').forEach(function(b){ b.setAttribute('aria-pressed','false');});
+btn.setAttribute('aria-pressed','true');
+qrSize = parseInt(btn.getAttribute('data-size'), 10);
+toast('ダウンロードサイズを ' + qrSize + 'px にしました');
+});
+});
+
+document.getElementById('copyUrlBtn').addEventListener('click', function(){
+copyText(qrUrlInput.value.trim(), 'URLをコピーしました');
+});
+
+document.getElementById('qrDownload').addEventListener('click', function(){
+var url = qrUrlInput.value.trim();
+if (!url){ toast('URLを入力してください'); return;}
+/* Draw a fresh high-res QR onto an offscreen element, then export */
+var holder = document.createElement('div');
+holder.style.position = 'fixed'; holder.style.left = '-9999px'; holder.style.top = '0';
+document.body.appendChild(holder);
+function cleanup(){ if (holder.parentNode) holder.parentNode.removeChild(holder);}
+function exportCanvas(canvas){
+var out = document.createElement('canvas');
+out.width = qrSize; out.height = qrSize;
+var ctx = out.getContext('2d');
+ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,qrSize,qrSize);
+ctx.imageSmoothingEnabled = false;
+ctx.drawImage(canvas, 0, 0, qrSize, qrSize);
+var a = document.createElement('a');
+a.download = 'nakaji-care-qr-' + qrSize + '.png';
+a.href = out.toDataURL('image/png');
+document.body.appendChild(a); a.click(); document.body.removeChild(a);
+cleanup();
+toast('QRコードをダウンロードしました');
+}
+if (typeof QRCode!== 'undefined'){
+new QRCode(holder, { text: url, width: 512, height: 512, colorDark: qrColor, colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M});
+setTimeout(function(){
+var canvas = holder.querySelector('canvas');
+if (canvas){ exportCanvas(canvas);}
+else {
+var img = holder.querySelector('img');
+if (img && img.src){
+var tmp = new Image();
+tmp.onload = function(){
+var c = document.createElement('canvas'); c.width = tmp.width; c.height = tmp.height;
+c.getContext('2d').drawImage(tmp,0,0);
+exportCanvas(c);
+};
+tmp.src = img.src;
+} else { cleanup(); toast('QRの生成に失敗しました');}
+}
+}, 60);
+} else {
+var a = document.createElement('a');
+a.download = 'nakaji-care-qr.png';
+a.href = qrColor === '#000000'? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuQAAALkAQAAAABv3x3IAAADg0lEQVR4nO3dS3KjMBAA0NbU7PEN5v7HmhvACTQLC/QBZxI7qZj49cJBAV65tOnSr51yfF0sv74Qj6DT6XQ6nU6n0+l0Op1Op9PpdDqdTqfT6fRv0tMYl4iULv3zS7n39msH+hcEnU6n0+lPrU+5iYiIyPlvyaElaf7JOWLKuc26+9e+4bvT6XQ6nf4E+u+hXQai09w1IyJfm0uKaD5uvLbGmXuGTqfT6fRP13Oey1U7Np13d+/THww6nU6n00+nTzmXBdVl+5jKZPDj+kNBp9PpdPqz6eM88JAr03Vqt87vLpfmubTduJFiz9wzdDqdTqc/qC/ttt7hwbJR6U+/Zek/r/2YnqHT6XQ6/V3RjFePxpx526NU7q67lXJzdTvO3DN0Op1Opz+kD+PQMvqctvMzy9ace2PZjuJchhOvP6Rn6HQ6nU5/Z9wer9ZmimmOYV44HVzl/uxNnLtn6HQ6nU6/I9qaDnNEOyJdr4ZH6kcFyvW6UXh9+Mw9Q6fT6XT6HdFWShrTYsRwpmZXVqm+Mff5V16l0+l0+ivqB8mwv3vUrGuuRwnXeJVOp9Pp9HbbUc2SpTlH7KpBLCnd3MF0oH9B0Ol0Op3+bHpXF2LddjSeXW3uDoWDl0u33WnK/btn7hk6nU6n0z8e+/3AtaJSlzTbuvu1ucaNyktn7hk6nU6n0++Io6XVujNptwG4Lq3eUKyv0ul0Op1+jWlLruviaV1zHQoXtmuua6hjSKfT6fRX15t54BTRV4OIMhkc17oQ0xylouHUDldz/671VTqdTqe/sD6ur6YtaZY/U25+zXyXUtfCwcM67Bpn7hk6nU6n0x/S6zTubva3myBuSwhfymvtT7R+x3en0+l0Ov0p9MP6wO2Yc0lr3d8pRx2+rqPZ+fo3XT+m3OwMjnP3DJ1Op9Ppd8SuNGGNqd3d2/6vu7t7zn5gOp1Op9Mj2ozYnbOpPxG3u4pdqcPb+qcHnU6n0+nPrpel0sv2j6OUGm3CHZZWuzT7k3qGTqfT6fRP1NuqEX/bHFoHt86v0ul0Ov3V9d9v305jyd/usE1743q69WLfEp1Op9NfWR/zah6btSDwWjg4lTIR/d7f/enWOHfP0Ol0Op3+8Tj8PZsaXWX9g1HqGkPWXePMPUOn0+l0+scj7Y/XfF4sZ+4ZOp1Op9PpdDqdTqfT6XQ6nU6n0+l0Op1O7+Mf3a0jM4tbMJMAAAAASUVORK5CYII=': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuQAAALkCAIAAADIxrcyAAAQn0lEQVR4nO3YMXIruRVAUcvFLXAXTLn/BTDlLnoRdODIgedLhIbvYvqcvAuvgaZ0C1+v1+tfAABV/54eAADgr4gVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQdpke4NOu99v0CPzB8Xi+/ezK+a6sy/ft+Bs827ex4xmdzdm+STcrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQdpkeYCfH4zk9wjau99vIuitntDLz1Lcxtc8rdjyjs627wt/J79vx9zvFzQoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKRdpgc4i+v9Nj3Cjx2P5/QIP7bjPq+YOqOVfZ46o7Otu6Md92rHv5M7crMCAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpl+kB4Dcdj+fbz17vt1+c5DNWZl7ZqxVT6+54vlN7BTVuVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIO0yPQBUHI/n289e77dfnOQzpmZeWXfljKbOd2Vd4L/crAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNpleoCzOB7P6RFO4Xq/vf3s1Bmd7dtYOaMpU2e04/e8YseZ+Qw3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkHaZHmAn1/ttegT4Hyvf5PF4Wje+7o78neTv4GYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSvl6v1/QMkHC936ZH+LHj8RxZ115939ReTb0v/B3crAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNpleoBPu95vbz97PJ7brTtl5X1XrOzVjvu8Ysczom/Hv3X+L/S5WQEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgLTL9ACfdjye0yOcwtn2+Xq/vf3syl6trMv3nW2fz/a+foN9blYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACDtMj3ATq732/QIHzX1vsfjObLuyvtOzTy17oqpfd5x3RU7fs87/o3d8dvYkZsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBI+3q9XtMzfNT1fnv72ePx3G7dHa3s1Yodz3fHvdrR1D6v2PF7XrHjzHyfmxUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEj7er1e0zPwB9f7bXqEbRyP59vP2ufv23GfV2aesrJXzqhv6nx35GYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMDfNr1fnv72ePxHFl3xcrMO9pxn3eceWrdqb1aMfU3h8/Y8ZvckZsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIu0wPsJPr/TY9wo/tODOfMfVtHI/nyLordvwdrcy84xlNWdmrHb+rKW5WAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAg7ev1ek3PwB9c77fpEX7seDzffnblfVfWnbLj+57tm5wytc87flc7ni/f52YFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMD7OR6v02P8GPH4zmy7o57tTLz1D6vmDoje9Xn2/iMs/3NWeFmBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0i7TA+zkeDxH1r3eb9utu7JXK+vuuFc7rrujHb/nFTvOPOVs77sjNysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJB2mR7g067328i6x+M5su6UHff5bDNPfZNTM5/tN7hix29jxdned0duVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIO3r9XpNz3AK1/vt7WePx/MXJ/m+HWeesrJXOzrb+a6Y+h35/fJP4mYFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSLtMDfNr1fpse4aOm3ndl3ePx3G7dFVPr7vhtrJja5xVnO6MpZ/ubsyM3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkPb1er2mZ4Bfc73fRtY9Hs+3n91x5ik77tWOM0+Z2qsVU9/Gjue7ws0KAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkXaYH+LTr/TY9An9wPJ7W/aaV73nqtzC1zytW9mrqfFdMve+KHb8rvs/NCgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApF2mB9jJ8XhOj7CN6/02su6OZ7TjXq3M7H37dvwd8c/mZgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANK+Xq/X9Awfdb3f3n72eDxH1p0y9b4r664428xTfFfUTH0bfJ+bFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASLtMDwC873g83372er/94iSfMfW+K+uuONv7Tn2TU+tO7fOO3KwAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAEDaZXoA+E3X++3tZ4/Hc2Tds5k6o5Vnp/iuvm/qfFfOaOq3sCM3KwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkHaZHuAsjsdzeoRTWNnn6/32i5N8xtned2Xmqb3acd0dTe3V2fZ5ipsVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIu0wPsJPr/TY9An9wtjNaed/j8fzFST7jbOd7Nivf5I7fxtl+vyvcrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQNrX6/WangEA4P9yswIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQJlYAgDSxAgCkiRUAIE2sAABpYgUASBMrAECaWAEA0sQKAJAmVgCANLECAKSJFQAgTawAAGliBQBIEysAQJpYAQDSxAoAkCZWAIA0sQIApIkVACBNrAAAaWIFAEgTKwBAmlgBANLECgCQ9h/EqAY7I0BAfQAAAABJRU5ErkJggg==';
+document.body.appendChild(a); a.click(); document.body.removeChild(a);
+cleanup();
+toast('QRコードをダウンロードしました');
+}
+});
+
+renderQR();
+})();
+</script>
+</body>
+</html>
