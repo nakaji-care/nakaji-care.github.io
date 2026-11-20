@@ -140,6 +140,33 @@
       body { padding: 16px 10px; }
       main { padding: 22px 18px; }
     }
+  
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    .to-top {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 50;
+      background: #2e5e4e;
+      color: #fff;
+      text-decoration: none;
+      font-size: .85rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+      opacity: .92;
+    }
+    .to-top:hover { opacity: 1; }
+    .page-footer {
+      text-align: center;
+      margin: 30px 0 6px;
+      font-size: .95rem;
+    }
+    .page-footer a { color: #2e5e4e; font-weight: bold; text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -191,9 +218,12 @@
     fetch('https://abacus.jasoncameron.dev/hit/nakaji-care.github.io/visits')
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        document.getElementById('visitor-count').textContent = String(d.value).padStart(6, '0');
+        if (d && typeof d.value === 'number') {
+          document.getElementById('visitor-count').textContent = String(d.value).padStart(6, '0');
+        }
       })
       .catch(function () { /* カウンターが読めないときは、そのまま */ });
   </script>
+  <a class="to-top" href="#top">↑ ページの上へ</a>
 </body>
 </html>
